@@ -3,12 +3,19 @@
 
 #include <iostream>
 #include <string>
+#include <deque>
+#include "Utilities.h"
 #include "ItemSet.h"
 
 namespace sict
 {
     class CustomerOrder
     {
+        Utilities helperObject;
+        ItemSet itemSetObject;
+        std::string customerName;
+        std::string assembledProduct;
+        std::deque<std::string> components;
 
     public:
         CustomerOrder();

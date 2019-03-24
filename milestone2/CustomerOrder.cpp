@@ -6,12 +6,14 @@ namespace sict
 {
     CustomerOrder::CustomerOrder()
     {
-        
+        customerName.clear();
+        assembledProduct.clear();
+        components.clear();
     }
 
     CustomerOrder::CustomerOrder(const std::string& incomingStr)
     {
-
+        
     }
 
     CustomerOrder::~CustomerOrder()
