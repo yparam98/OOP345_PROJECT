@@ -1,3 +1,8 @@
+//	program    : CustomerOrder.cpp
+//	programmer : Yathavan, Parameshwaran
+//	date       : March 22, 2019
+//	professor  : Chris, Szalwinski
+
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "CustomerOrder.h"
@@ -9,8 +14,7 @@ namespace sict
     {
         customerName.clear();
         assembledProduct.clear();
-        ItemInfo->itemName.clear();
-        
+        ItemInfo->itemName.clear();        
     }
 
     CustomerOrder::CustomerOrder(const std::string& incomingStr)
@@ -30,10 +34,11 @@ namespace sict
             this->assembledProduct = helperObject.extractToken(newStr,beginningOfStr);
             {
                 size_t pos{0};
-                while ((pos = newStr1.find(helperObject.getDelimiter())) != std::string::npos) // while the position of the delimiter is existent
+                newStr1 += '|';
+                while ((pos = newStr1.find(helperObject.getDelimiter())) != std::string::npos) 
                 {
                     ItemInfo[subCounter++].itemName = helperObject.extractToken(newStr1, beginningOfStr); 
-                    newStr1.erase(0, pos); // erase string up to the next delimiter, prepping it for the next iteration
+                    newStr1.erase(0, pos+1); 
                 }
             }
         }
@@ -85,13 +90,6 @@ namespace sict
 
     void CustomerOrder::fillItem(ItemSet& item, std::ostream& os)
     {
-        // check item request
-        // if available && request not previously filled 
-        // {
-        //     fill
-        //     decrement item stock by 1
-        // }
-
         for (int index = 0; index < subCounter; index++)
         {
             if (ItemInfo[index].itemName == item.getName())
@@ -126,7 +124,7 @@ namespace sict
                 }
                 else
                 {
-                    os << "Your code is fucked..." << std::endl;
+                    os << "Your code is incorrect..." << std::endl;
                 }
             }
         }

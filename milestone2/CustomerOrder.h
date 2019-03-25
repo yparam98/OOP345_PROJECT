@@ -1,3 +1,8 @@
+//	program    : CustomerOrder.h
+//	programmer : Yathavan, Parameshwaran
+//	date       : March 22, 2019
+//	professor  : Chris, Szalwinski
+
 #ifndef SICT_CUSTOMER_ORDER_H
 #define SICT_CUSTOMER_ORDER_H
 
