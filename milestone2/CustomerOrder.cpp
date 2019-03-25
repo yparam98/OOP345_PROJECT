@@ -165,6 +165,7 @@ namespace sict
                 }
             }
         }
+        return false;
     }
 
     std::string CustomerOrder::getNameProduct() const
