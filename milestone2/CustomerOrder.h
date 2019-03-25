@@ -12,7 +12,6 @@ namespace sict
     class CustomerOrder
     {
         Utilities helperObject;
-        ItemSet itemSetObject;
         std::string customerName;
         std::string assembledProduct;
         std::deque<std::string> components;
