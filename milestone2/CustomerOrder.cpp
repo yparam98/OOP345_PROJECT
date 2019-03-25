@@ -1,7 +1,3 @@
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <algorithm>
 #include "CustomerOrder.h"
 #include "Utilities.h"
 
@@ -11,8 +7,7 @@ namespace sict
     {
         customerName.clear();
         assembledProduct.clear();
-        ItemInfo.itemName.clear();
-        ItemInfo.serialNumber = 0;
+        ItemInfo->itemName.clear();
         
     }
 
@@ -32,16 +27,22 @@ namespace sict
 
         try
         {
-            this->customerName = helperObject.extractToken(incomingStr,positionOfFirstDelim);
+            this->customerName = helperObject.extractToken(incomingStr,beginningOfStr);
             this->assembledProduct = helperObject.extractToken(newStr,beginningOfStr);
-            
-            
+            {
+                size_t pos{0};
+                while (pos = newStr1.find(helperObject.getDelimiter()) != std::string::npos) // while the position of the delimiter is existent
+                {
+                    ItemInfo[subCounter++].itemName = helperObject.extractToken(newStr1, beginningOfStr); 
+                    newStr1.erase(0, pos); // erase string up to the next delimiter, prepping it for the next iteration
+                }
+            }
         }
-        catch(const std::exception& e)
+        catch(const char* incomingErrorMessage)
         {
-            std::cerr << e.what() << '\n';
+            std::cout << incomingErrorMessage << std::endl;
         }
-        
+        myFieldWidthForCustomerName = customerName.length();
     }
 
     CustomerOrder::~CustomerOrder()
@@ -51,36 +52,156 @@ namespace sict
 
     CustomerOrder::CustomerOrder(CustomerOrder&& incomingObj)
     {
-
+        *this = std::move(incomingObj);
     }
 
     CustomerOrder& CustomerOrder::operator=(CustomerOrder&& incomingObj)
     {
+        if (this != &incomingObj)
+        {
+            this->customerName = incomingObj.customerName;
+            this->assembledProduct = incomingObj.assembledProduct;
+            this->myFieldWidthForCustomerName = incomingObj.myFieldWidthForCustomerName;
+            this->subCounter = incomingObj.subCounter;
+            for (int index = 0; index < incomingObj.subCounter; index++)
+            {
+                this->ItemInfo[index].itemName = incomingObj.ItemInfo[index].itemName;
+                this->ItemInfo[index].serialNumber = incomingObj.ItemInfo[index].serialNumber;
+                this->ItemInfo[index].filled = incomingObj.ItemInfo[index].filled;                
+            }
 
+            incomingObj.customerName.clear();
+            incomingObj.assembledProduct.clear();
+            incomingObj.myFieldWidthForCustomerName = 0;
+            incomingObj.subCounter = 0;
+            for (int index = 0; index < incomingObj.subCounter; index++)
+            {
+                incomingObj.ItemInfo[index].itemName.clear();
+                incomingObj.ItemInfo[index].serialNumber = 0;
+                incomingObj.ItemInfo[index].filled = false;                
+            }
+
+        }
     }
 
     void CustomerOrder::fillItem(ItemSet& item, std::ostream& os)
     {
+        // check item request
+        // if available && request not previously filled 
+        // {
+        //     fill
+        //     decrement item stock by 1
+        // }
 
+        for (int index = 0; index < subCounter; index++)
+        {
+            if (ItemInfo[index].itemName == item.getName())
+            {
+                ItemInfo[index].serialNumber = item.getSerialNumber();
+
+                if (ItemInfo[index].filled != true && item.getQuantity() > 0)
+                {
+                    os << "Filled " << this->customerName
+                       << " [" << this->assembledProduct << "]"
+                       << "[" << item.getName() << "]"
+                       << "[" << item.getSerialNumber() << "]"
+                       << std::endl;
+
+                    item.operator--();
+                }
+                else if (ItemInfo[index].filled == true)
+                {
+                    os << "Unable to fill " << this->customerName
+                       << " [" << this->assembledProduct << "]"
+                       << "[" << item.getName() << "]"
+                       << "[" << item.getSerialNumber() << "]"
+                       << " already filled" << std::endl;
+                }
+                else if (item.getQuantity() == 0)
+                {
+                    os << "Unable to fill " << this->customerName
+                       << " [" << this->assembledProduct << "]"
+                       << "[" << item.getName() << "]"
+                       << "[" << item.getSerialNumber() << "]"
+                       << " out of stock" << std::endl;
+                }
+                else
+                {
+                    os << "Your code is fucked..." << std::endl;
+                }
+            }
+        }
     }
 
     bool CustomerOrder::isFilled() const
     {
+        bool temp{false};
+        for (int index = 0; index < subCounter; index++)
+        {
+            if (ItemInfo[index].filled)
+            {
+                temp = true;
+            }
+        }
 
+        if (temp)
+            return true;
+        else    
+            return false;
     }
 
     bool CustomerOrder::isItemFilled(const std::string& item) const
     {
-
+        for (int index = 0; index < subCounter; index++)
+        {
+            if (ItemInfo[index].itemName == item)
+            {
+                if (ItemInfo[index].filled == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
     }
 
     std::string CustomerOrder::getNameProduct() const
     {
-
+        return (this->customerName + " [" + this->assembledProduct + "]");
     }
 
     void CustomerOrder::display(std::ostream& os, bool showDetail) const
     {
+        if (showDetail)
+        {
+            os << this->customerName << " [" << this->assembledProduct << "]" << std::endl;
+            for (int index = 0; index < subCounter; index++)
+            {
+                os << std::left << std::setw(myFieldWidthForCustomerName+1) << ItemInfo[index].itemName << std::endl;
+            }
+        }
+        else
+        {
+            os << this->customerName << " [" << this->assembledProduct << "]" << std::endl;
+            for (int index = 0; index < subCounter; index++)
+            {
+                std::string temp;
 
+                os << std::left << std::setw(myFieldWidthForCustomerName+1) 
+                << "[" << ItemInfo[index].serialNumber << "] " 
+                << ItemInfo[index].itemName
+                << " - ";
+
+                if (ItemInfo[index].filled)
+                    temp = "true";
+                else
+                    temp = "false";
+
+                os << temp << std::endl;
+            }
+        }
     }
 }

@@ -4,6 +4,9 @@
 #include <iostream>
 #include <string>
 #include <deque>
+#include <sstream>
+#include <algorithm>
+
 #include "Utilities.h"
 #include "ItemSet.h"
 
@@ -17,12 +20,14 @@ namespace sict
         ItemSet itemSetObject;
         std::string customerName;
         std::string assembledProduct;
+        int myFieldWidthForCustomerName{0};
+        int subCounter{0};
         
         struct
         {
             std::string itemName;
-            long serialNumber;
-            bool filled;
+            long serialNumber{0};
+            bool filled{false};
         } ItemInfo[maxNumOfItems];
 
     public:
