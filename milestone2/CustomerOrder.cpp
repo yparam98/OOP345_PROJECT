@@ -23,30 +23,30 @@ namespace sict
 		size_t positionOfFirstDelim = 0;
 		size_t positionOfSecondDelim = 0;
 		
-        positionOfFirstDelim = incomingStr.find(helperObject.getDelimiter());
+        positionOfFirstDelim = incomingStr.find(this->helperObject.getDelimiter());
 		std::string newStr = incomingStr.substr(positionOfFirstDelim + 1, incomingStr.length());
-		positionOfSecondDelim = newStr.find_first_of(helperObject.getDelimiter());	
+		positionOfSecondDelim = newStr.find_first_of(this->helperObject.getDelimiter());	
 		std::string newStr1 = newStr.substr(positionOfSecondDelim + 1, newStr.length());
 		
         try
         {
-            this->customerName = helperObject.extractToken(incomingStr,beginningOfStr);
-            this->assembledProduct = helperObject.extractToken(newStr,beginningOfStr);
+            this->customerName = this->helperObject.extractToken(incomingStr,beginningOfStr);
+            this->assembledProduct = this->helperObject.extractToken(newStr,beginningOfStr);
             {
                 size_t pos{0};
                 newStr1 += '|';
-                while ((pos = newStr1.find(helperObject.getDelimiter())) != std::string::npos) 
+                while ((pos = newStr1.find(this->helperObject.getDelimiter())) != std::string::npos) 
                 {
-                    ItemInfo[subCounter++].itemName = helperObject.extractToken(newStr1, beginningOfStr); 
+                    ItemInfo[subCounter++].itemName = this->helperObject.extractToken(newStr1, beginningOfStr); 
                     newStr1.erase(0, pos+1); 
                 }
             }
+            this->helperObject.setFieldWidth(customerName.length());
         }
         catch(const char* incomingErrorMessage)
         {
             std::cout << incomingErrorMessage << std::endl;
         }
-        myFieldWidthForCustomerName = customerName.length();
     }
 
     CustomerOrder::~CustomerOrder()
@@ -65,7 +65,6 @@ namespace sict
         {
             this->customerName = incomingObj.customerName;
             this->assembledProduct = incomingObj.assembledProduct;
-            this->myFieldWidthForCustomerName = incomingObj.myFieldWidthForCustomerName;
             this->subCounter = incomingObj.subCounter;
             for (int index = 0; index < incomingObj.subCounter; index++)
             {
@@ -76,7 +75,6 @@ namespace sict
 
             incomingObj.customerName.clear();
             incomingObj.assembledProduct.clear();
-            incomingObj.myFieldWidthForCustomerName = 0;
             incomingObj.subCounter = 0;
             for (int index = 0; index < incomingObj.subCounter; index++)
             {
@@ -180,7 +178,7 @@ namespace sict
             {
                 std::string temp;
 
-                os << std::left << std::setw(myFieldWidthForCustomerName+1) 
+                os << std::setw(this->helperObject.getFieldWidth()) 
                 << "[" << ItemInfo[index].serialNumber << "] " 
                 << ItemInfo[index].itemName
                 << " - ";
@@ -195,10 +193,10 @@ namespace sict
         }
         else
         {
-            os << this->customerName << " [" << this->assembledProduct << "]" << std::endl;
+            os << std::left << std::setw(this->helperObject.getFieldWidth()) << this->customerName << " [" << this->assembledProduct << "]" << std::endl;
             for (int index = 0; index < subCounter; index++)
             {
-                os << std::left << std::setw(myFieldWidthForCustomerName+1) << ItemInfo[index].itemName << std::endl;
+                os << std::right << std::setw(this->helperObject.getFieldWidth()) << ItemInfo[index].itemName << std::endl;
             }
         }        
     }

@@ -25,7 +25,6 @@ namespace sict
         ItemSet itemSetObject;
         std::string customerName;
         std::string assembledProduct;
-        int myFieldWidthForCustomerName{0};
         int subCounter{0};
         
         struct
