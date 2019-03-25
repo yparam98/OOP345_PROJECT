@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "CustomerOrder.h"
 #include "Utilities.h"
 
@@ -16,22 +18,19 @@ namespace sict
         size_t beginningOfStr = 0;
 		size_t positionOfFirstDelim = 0;
 		size_t positionOfSecondDelim = 0;
-		size_t positionOfThirdDelim = 0;
-        static int counter = 0;
-
-		positionOfFirstDelim = incomingStr.find(helperObject.getDelimiter());
+		
+        positionOfFirstDelim = incomingStr.find(helperObject.getDelimiter());
 		std::string newStr = incomingStr.substr(positionOfFirstDelim + 1, incomingStr.length());
 		positionOfSecondDelim = newStr.find_first_of(helperObject.getDelimiter());	
 		std::string newStr1 = newStr.substr(positionOfSecondDelim + 1, newStr.length());
-		positionOfThirdDelim = incomingStr.rfind(helperObject.getDelimiter());
-
+		
         try
         {
             this->customerName = helperObject.extractToken(incomingStr,beginningOfStr);
             this->assembledProduct = helperObject.extractToken(newStr,beginningOfStr);
             {
                 size_t pos{0};
-                while (pos = newStr1.find(helperObject.getDelimiter()) != std::string::npos) // while the position of the delimiter is existent
+                while ((pos = newStr1.find(helperObject.getDelimiter())) != std::string::npos) // while the position of the delimiter is existent
                 {
                     ItemInfo[subCounter++].itemName = helperObject.extractToken(newStr1, beginningOfStr); 
                     newStr1.erase(0, pos); // erase string up to the next delimiter, prepping it for the next iteration
@@ -80,8 +79,8 @@ namespace sict
                 incomingObj.ItemInfo[index].serialNumber = 0;
                 incomingObj.ItemInfo[index].filled = false;                
             }
-
         }
+        return *this;
     }
 
     void CustomerOrder::fillItem(ItemSet& item, std::ostream& os)
@@ -180,14 +179,6 @@ namespace sict
             os << this->customerName << " [" << this->assembledProduct << "]" << std::endl;
             for (int index = 0; index < subCounter; index++)
             {
-                os << std::left << std::setw(myFieldWidthForCustomerName+1) << ItemInfo[index].itemName << std::endl;
-            }
-        }
-        else
-        {
-            os << this->customerName << " [" << this->assembledProduct << "]" << std::endl;
-            for (int index = 0; index < subCounter; index++)
-            {
                 std::string temp;
 
                 os << std::left << std::setw(myFieldWidthForCustomerName+1) 
@@ -203,5 +194,13 @@ namespace sict
                 os << temp << std::endl;
             }
         }
+        else
+        {
+            os << this->customerName << " [" << this->assembledProduct << "]" << std::endl;
+            for (int index = 0; index < subCounter; index++)
+            {
+                os << std::left << std::setw(myFieldWidthForCustomerName+1) << ItemInfo[index].itemName << std::endl;
+            }
+        }        
     }
 }
