@@ -23,7 +23,6 @@ namespace sict
 		tempStr = str.substr(next_pos, positionOfDelim);
 		if (tempStr.empty())
 			throw("Exception occured in extractToken!");
-		setFieldWidth(tempStr.length());
 		return tempStr;
 	}
 

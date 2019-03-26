@@ -32,6 +32,7 @@ namespace sict
 		try 
 		{
 			this->myName = helper.extractToken(incomingStr, beginningOfStr);
+			helper.setFieldWidth(myName.length());
 			this->mySerialNum = std::stol(helper.extractToken(newStr, beginningOfStr));
 			this->myQuantity = std::stoi(helper.extractToken(newStr1, beginningOfStr));
 			this->myDescription = incomingStr.substr(positionOfThirdDelim + 1, incomingStr.length());
@@ -80,8 +81,9 @@ namespace sict
 	//operator-- overload, gets called when product stock depletes
 	ItemSet & ItemSet::operator--()
 	{
-		this->myQuantity--;
-		this->mySerialNum++;
+		myQuantity--;
+		mySerialNum++;
+		
 		return *this;
 	}
 

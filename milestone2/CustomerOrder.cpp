@@ -64,6 +64,7 @@ namespace sict
         if (this != &incomingObj)
         {
             this->customerName = incomingObj.customerName;
+            helperObject.setFieldWidth(customerName.length());
             this->assembledProduct = incomingObj.assembledProduct;
             this->subCounter = incomingObj.subCounter;
             for (int index = 0; index < incomingObj.subCounter; index++)
@@ -92,37 +93,47 @@ namespace sict
         {
             if (ItemInfo[index].itemName == item.getName())
             {
-                ItemInfo[index].serialNumber = item.getSerialNumber();
-
                 if (ItemInfo[index].filled != true && item.getQuantity() > 0)
                 {
-                    os << "Filled " << this->customerName
+                    ItemInfo[index].serialNumber = item.getSerialNumber();
+
+                    os << " Filled " << this->customerName
                        << " [" << this->assembledProduct << "]"
-                       << "[" << item.getName() << "]"
-                       << "[" << item.getSerialNumber() << "]"
+                       << "[" << ItemInfo[index].itemName << "]"
+                       << "[" << ItemInfo[index].serialNumber << "]"
                        << std::endl;
+                    
+                    ItemInfo[index].filled = true;
 
                     item.operator--();
+                    
+                    break;
                 }
                 else if (ItemInfo[index].filled == true)
                 {
-                    os << "Unable to fill " << this->customerName
+                    os << " Unable to fill " << this->customerName
                        << " [" << this->assembledProduct << "]"
-                       << "[" << item.getName() << "]"
-                       << "[" << item.getSerialNumber() << "]"
+                       << "[" << ItemInfo[index].itemName << "]"
+                       << "[" << ItemInfo[index].serialNumber << "]"
                        << " already filled" << std::endl;
+
+                       break;
                 }
                 else if (item.getQuantity() == 0)
                 {
-                    os << "Unable to fill " << this->customerName
+                    os << " Unable to fill " << this->customerName
                        << " [" << this->assembledProduct << "]"
-                       << "[" << item.getName() << "]"
-                       << "[" << item.getSerialNumber() << "]"
+                       << "[" << ItemInfo[index].itemName << "]"
+                       << "[" << ItemInfo[index].serialNumber << "]"
                        << " out of stock" << std::endl;
+
+                       break;
                 }
                 else
                 {
                     os << "Your code is incorrect..." << std::endl;
+
+                    break;
                 }
             }
         }
@@ -130,16 +141,16 @@ namespace sict
 
     bool CustomerOrder::isFilled() const
     {
-        bool temp{false};
+        int filledCounter{0};
         for (int index = 0; index < subCounter; index++)
         {
             if (ItemInfo[index].filled)
             {
-                temp = true;
+                filledCounter++;
             }
         }
 
-        if (temp)
+        if (filledCounter == subCounter)
             return true;
         else    
             return false;
@@ -179,7 +190,7 @@ namespace sict
                 std::string temp;
 
                 os << std::setw(this->helperObject.getFieldWidth()) 
-                << "[" << ItemInfo[index].serialNumber << "] " 
+                << "[" << ItemInfo[index].serialNumber << "]" 
                 << ItemInfo[index].itemName
                 << " - ";
 
@@ -196,7 +207,7 @@ namespace sict
             os << std::left << std::setw(this->helperObject.getFieldWidth()) << this->customerName << " [" << this->assembledProduct << "]" << std::endl;
             for (int index = 0; index < subCounter; index++)
             {
-                os << std::right << std::setw(this->helperObject.getFieldWidth()) << ItemInfo[index].itemName << std::endl;
+                os << std::right << std::setw(this->helperObject.getFieldWidth()+1) << "" << ItemInfo[index].itemName << std::endl;
             }
         }        
     }

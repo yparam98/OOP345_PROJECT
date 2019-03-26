@@ -22,7 +22,6 @@ namespace sict
     class CustomerOrder
     {
         Utilities helperObject;
-        ItemSet itemSetObject;
         std::string customerName;
         std::string assembledProduct;
         int subCounter{0};
