@@ -6,10 +6,10 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "CustomerOrder.h"
-#include "Utilities.h"
 
 namespace sict
 {
+    //default constructor, initializes object to empty state
     CustomerOrder::CustomerOrder()
     {
         customerName.clear();
@@ -17,6 +17,7 @@ namespace sict
         ItemInfo->itemName.clear();        
     }
 
+    //one argument constructor, initializes objects based on incoming string
     CustomerOrder::CustomerOrder(const std::string& incomingStr)
     {
         size_t beginningOfStr = 0;
@@ -49,16 +50,19 @@ namespace sict
         }
     }
 
+    //destructor, deallocates any previously allocated memory
     CustomerOrder::~CustomerOrder()
     {
 
     }
 
+    //copy constructor
     CustomerOrder::CustomerOrder(CustomerOrder&& incomingObj)
     {
         *this = std::move(incomingObj);
     }
 
+    //move assignment operator
     CustomerOrder& CustomerOrder::operator=(CustomerOrder&& incomingObj)
     {
         if (this != &incomingObj)
@@ -87,6 +91,7 @@ namespace sict
         return *this;
     }
 
+    //fill item member function, fills specified item is unfilled
     void CustomerOrder::fillItem(ItemSet& item, std::ostream& os)
     {
         for (int index = 0; index < subCounter; index++)
@@ -139,6 +144,7 @@ namespace sict
         }
     }
 
+    //query, returns status of filled item
     bool CustomerOrder::isFilled() const
     {
         int filledCounter{0};
@@ -156,6 +162,7 @@ namespace sict
             return false;
     }
 
+    //query, checks if specific item is filled or not
     bool CustomerOrder::isItemFilled(const std::string& item) const
     {
         for (int index = 0; index < subCounter; index++)
@@ -175,11 +182,13 @@ namespace sict
         return false;
     }
 
+    //returns name and product
     std::string CustomerOrder::getNameProduct() const
     {
         return (this->customerName + " [" + this->assembledProduct + "]");
     }
 
+    //display query, prints object to output
     void CustomerOrder::display(std::ostream& os, bool showDetail) const
     {
         if (showDetail)
