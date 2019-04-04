@@ -4,17 +4,17 @@ namespace sict
 {
     Station::Station(std::string &incomingString)
     {
-        
+        this->myItemSet = new ItemSet(incomingString);
     }
 
     void Station::display(std::ostream &os) const
     {
-
+        myItemSet->display(os);
     }
 
     void Station::fill(std::ostream &os)
     {
-
+        
     }
 
     const std::string &getName()
