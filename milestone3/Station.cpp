@@ -9,7 +9,7 @@ namespace sict
 
     void Station::display(std::ostream &os) const
     {
-        myItemSet->display(os);
+        
     }
 
     void Station::fill(std::ostream &os)
