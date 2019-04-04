@@ -9,7 +9,7 @@ namespace sict
 
     void LineManager::display(std::ostream& os) const
     {
-
+        
     }
 
     bool LineManager::run(std::ostream& os)

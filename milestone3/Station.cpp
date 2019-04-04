@@ -4,7 +4,7 @@ namespace sict
 {
     Station::Station(std::string &incomingString)
     {
-
+        
     }
 
     void Station::display(std::ostream &os) const
@@ -17,7 +17,7 @@ namespace sict
 
     }
 
-    const std::string &getName() const
+    const std::string &getName()
     {
 
     }

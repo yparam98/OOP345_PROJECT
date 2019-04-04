@@ -16,7 +16,7 @@ namespace sict
         Station(std::string &incomingString);
         void display(std::ostream& os) const;
         void fill(std::ostream& os);
-        const std::string& getName() const;
+        const std::string& getName();
         bool hasAnOrderToRelease() const;
         Station& operator--();
         Station& operator+=(CustomerOrder&& order);
