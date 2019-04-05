@@ -10,13 +10,13 @@ namespace sict
 {
     class Station
     {
-        std::deque<CustomerOrder> myCustomerOrder;
+        std::deque<CustomerOrder*> myCustomerOrder;
         ItemSet* myItemSet;
     public:
         Station(std::string &incomingString);
         void display(std::ostream& os) const;
         void fill(std::ostream& os);
-        const std::string& getName();
+        const std::string& getName() const;
         bool hasAnOrderToRelease() const;
         Station& operator--();
         Station& operator+=(CustomerOrder&& order);
