@@ -16,7 +16,7 @@ namespace sict
         /* a query that receives a reference to an std::ostream 
         object os and displays the data for its ItemSet on os. */
 
-        myItemSet->display(os, !myItemSet->getQuantity());
+        myItemSet->display(os, myItemSet->getQuantity());
         
     }    
 
@@ -121,9 +121,9 @@ namespace sict
                                 getQuantity(): NUMBER_OF_ITEMS_LEFT
         A detailed example of the formatting is shown in the output above. */
 
-        os << "getItem():" << myItemSet->getName() 
-            << "\ngetSerialNumber():" << myItemSet->getSerialNumber()
-            << "\ngetQuantity():" << myItemSet->getQuantity()
+        os << " getItem(): " << myItemSet->getName() 
+            << "\n getSerialNumber(): " << myItemSet->getSerialNumber()
+            << "\n getQuantity(): " << myItemSet->getQuantity()
             << std::endl;
     }
 }

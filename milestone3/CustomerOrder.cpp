@@ -42,7 +42,7 @@ namespace sict
                     newStr1.erase(0, pos+1); 
                 }
             }
-            this->helperObject.setFieldWidth(customerName.length());
+			this->helperObject.setFieldWidth(customerName.length()+2);
         }
         catch(const char* incomingErrorMessage)
         {
@@ -68,7 +68,6 @@ namespace sict
         if (this != &incomingObj)
         {
             this->customerName = incomingObj.customerName;
-            helperObject.setFieldWidth(customerName.length());
             this->assembledProduct = incomingObj.assembledProduct;
             this->subCounter = incomingObj.subCounter;
             for (int index = 0; index < incomingObj.subCounter; index++)
@@ -213,10 +212,10 @@ namespace sict
         }
         else
         {
-            os << std::left << std::setw(this->helperObject.getFieldWidth()) << this->customerName << " [" << this->assembledProduct << "]" << std::endl;
+            os << std::left << std::setw(this->helperObject.getFieldWidth()+2) << this->customerName << " [" << this->assembledProduct << "]" << std::endl;
             for (int index = 0; index < subCounter; index++)
             {
-                os << std::right << std::setw(this->helperObject.getFieldWidth()+1) << "" << ItemInfo[index].itemName << std::endl;
+                os << std::right << std::setw(this->helperObject.getFieldWidth()+3) << "" << ItemInfo[index].itemName << std::endl;
             }
         }        
     }
