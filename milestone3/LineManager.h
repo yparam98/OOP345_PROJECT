@@ -10,7 +10,7 @@ namespace sict
 {
     class LineManager
     {
-        Station *myStation;
+        std::vector<Station*> myStation;
         std::vector<CustomerOrder> myCustomerOrder;
         std::vector<int> orderOfStations;
     public:
