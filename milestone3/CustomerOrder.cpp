@@ -121,7 +121,7 @@ namespace sict
                        << "[" << ItemInfo[index].itemName << "]"
                        << "[" << ItemInfo[index].serialNumber << "]"
                        << " already filled" << std::endl;
-
+        
                        break;
                 }
                 else if (item.getQuantity() == 0)

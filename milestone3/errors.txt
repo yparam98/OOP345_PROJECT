@@ -1,0 +1,75 @@
+LineManager.cpp: In member function ‘void sict::LineManager::display(std::ostream&) const’:
+LineManager.cpp:17:29: warning: comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<sict::CustomerOrder>::size_type’ {aka ‘long unsigned int’} [-Wsign-compare]
+   for (int index = 0; index < myCustomerOrder.size(); index++)
+                       ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+LineManager.cpp: In member function ‘bool sict::LineManager::run(std::ostream&)’:
+LineManager.cpp:30:30: warning: comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<sict::Station*>::size_type’ {aka ‘long unsigned int’} [-Wsign-compare]
+    for (int index = 0; index < myStation.size(); index++)
+                        ~~~~~~^~~~~~~~~~~~~~~~~~
+In file included from /usr/include/c++/8.2.1/bits/char_traits.h:39,
+                 from /usr/include/c++/8.2.1/ios:40,
+                 from /usr/include/c++/8.2.1/ostream:38,
+                 from /usr/include/c++/8.2.1/iostream:39,
+                 from LineManager.h:4,
+                 from LineManager.cpp:1:
+/usr/include/c++/8.2.1/bits/stl_algobase.h: In instantiation of ‘static _OI std::__copy_move<false, false, std::random_access_iterator_tag>::__copy_m(_II, _II, _OI) [with _II = const sict::CustomerOrder*; _OI = sict::CustomerOrder*]’:
+/usr/include/c++/8.2.1/bits/stl_algobase.h:386:30:   required from ‘_OI std::__copy_move_a(_II, _II, _OI) [with bool _IsMove = false; _II = const sict::CustomerOrder*; _OI = sict::CustomerOrder*]’
+/usr/include/c++/8.2.1/bits/stl_algobase.h:422:45:   required from ‘_OI std::__copy_move_a2(_II, _II, _OI) [with bool _IsMove = false; _II = __gnu_cxx::__normal_iterator<const sict::CustomerOrder*, std::vector<sict::CustomerOrder> >; _OI = __gnu_cxx::__normal_iterator<sict::CustomerOrder*, std::vector<sict::CustomerOrder> >]’
+/usr/include/c++/8.2.1/bits/stl_algobase.h:455:8:   required from ‘_OI std::copy(_II, _II, _OI) [with _II = __gnu_cxx::__normal_iterator<const sict::CustomerOrder*, std::vector<sict::CustomerOrder> >; _OI = __gnu_cxx::__normal_iterator<sict::CustomerOrder*, std::vector<sict::CustomerOrder> >]’
+/usr/include/c++/8.2.1/bits/vector.tcc:226:31:   required from ‘std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = sict::CustomerOrder; _Alloc = std::allocator<sict::CustomerOrder>]’
+LineManager.cpp:8:21:   required from here
+/usr/include/c++/8.2.1/bits/stl_algobase.h:324:18: error: use of deleted function ‘sict::CustomerOrder& sict::CustomerOrder::operator=(const sict::CustomerOrder&)’
+        *__result = *__first;
+        ~~~~~~~~~~^~~~~~~~~~
+In file included from Station.h:6,
+                 from LineManager.h:6,
+                 from LineManager.cpp:1:
+CustomerOrder.h:22:11: note: ‘sict::CustomerOrder& sict::CustomerOrder::operator=(const sict::CustomerOrder&)’ is implicitly declared as deleted because ‘sict::CustomerOrder’ declares a move constructor or move assignment operator
+     class CustomerOrder
+           ^~~~~~~~~~~~~
+In file included from /usr/include/c++/8.2.1/bits/char_traits.h:39,
+                 from /usr/include/c++/8.2.1/ios:40,
+                 from /usr/include/c++/8.2.1/ostream:38,
+                 from /usr/include/c++/8.2.1/iostream:39,
+                 from LineManager.h:4,
+                 from LineManager.cpp:1:
+/usr/include/c++/8.2.1/bits/stl_algobase.h: In instantiation of ‘static _OI std::__copy_move<false, false, std::random_access_iterator_tag>::__copy_m(_II, _II, _OI) [with _II = sict::CustomerOrder*; _OI = sict::CustomerOrder*]’:
+/usr/include/c++/8.2.1/bits/stl_algobase.h:386:30:   required from ‘_OI std::__copy_move_a(_II, _II, _OI) [with bool _IsMove = false; _II = sict::CustomerOrder*; _OI = sict::CustomerOrder*]’
+/usr/include/c++/8.2.1/bits/stl_algobase.h:422:45:   required from ‘_OI std::__copy_move_a2(_II, _II, _OI) [with bool _IsMove = false; _II = sict::CustomerOrder*; _OI = sict::CustomerOrder*]’
+/usr/include/c++/8.2.1/bits/stl_algobase.h:455:8:   required from ‘_OI std::copy(_II, _II, _OI) [with _II = sict::CustomerOrder*; _OI = sict::CustomerOrder*]’
+/usr/include/c++/8.2.1/bits/vector.tcc:231:17:   required from ‘std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = sict::CustomerOrder; _Alloc = std::allocator<sict::CustomerOrder>]’
+LineManager.cpp:8:21:   required from here
+/usr/include/c++/8.2.1/bits/stl_algobase.h:324:18: error: use of deleted function ‘sict::CustomerOrder& sict::CustomerOrder::operator=(const sict::CustomerOrder&)’
+        *__result = *__first;
+        ~~~~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/8.2.1/vector:62,
+                 from LineManager.h:5,
+                 from LineManager.cpp:1:
+/usr/include/c++/8.2.1/bits/stl_construct.h: In instantiation of ‘void std::_Construct(_T1*, _Args&& ...) [with _T1 = sict::CustomerOrder; _Args = {sict::CustomerOrder&}]’:
+/usr/include/c++/8.2.1/bits/stl_uninitialized.h:83:18:   required from ‘static _ForwardIterator std::__uninitialized_copy<_TrivialValueTypes>::__uninit_copy(_InputIterator, _InputIterator, _ForwardIterator) [with _InputIterator = sict::CustomerOrder*; _ForwardIterator = sict::CustomerOrder*; bool _TrivialValueTypes = false]’
+/usr/include/c++/8.2.1/bits/stl_uninitialized.h:134:15:   required from ‘_ForwardIterator std::uninitialized_copy(_InputIterator, _InputIterator, _ForwardIterator) [with _InputIterator = sict::CustomerOrder*; _ForwardIterator = sict::CustomerOrder*]’
+/usr/include/c++/8.2.1/bits/stl_uninitialized.h:289:37:   required from ‘_ForwardIterator std::__uninitialized_copy_a(_InputIterator, _InputIterator, _ForwardIterator, std::allocator<_Tp>&) [with _InputIterator = sict::CustomerOrder*; _ForwardIterator = sict::CustomerOrder*; _Tp = sict::CustomerOrder]’
+/usr/include/c++/8.2.1/bits/vector.tcc:233:35:   required from ‘std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = sict::CustomerOrder; _Alloc = std::allocator<sict::CustomerOrder>]’
+LineManager.cpp:8:21:   required from here
+/usr/include/c++/8.2.1/bits/stl_construct.h:75:7: error: use of deleted function ‘sict::CustomerOrder::CustomerOrder(const sict::CustomerOrder&)’
+     { ::new(static_cast<void*>(__p)) _T1(std::forward<_Args>(__args)...); }
+       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from Station.h:6,
+                 from LineManager.h:6,
+                 from LineManager.cpp:1:
+CustomerOrder.h:22:11: note: ‘sict::CustomerOrder::CustomerOrder(const sict::CustomerOrder&)’ is implicitly declared as deleted because ‘sict::CustomerOrder’ declares a move constructor or move assignment operator
+     class CustomerOrder
+           ^~~~~~~~~~~~~
+In file included from /usr/include/c++/8.2.1/vector:62,
+                 from LineManager.h:5,
+                 from LineManager.cpp:1:
+/usr/include/c++/8.2.1/bits/stl_construct.h: In instantiation of ‘void std::_Construct(_T1*, _Args&& ...) [with _T1 = sict::CustomerOrder; _Args = {const sict::CustomerOrder&}]’:
+/usr/include/c++/8.2.1/bits/stl_uninitialized.h:83:18:   required from ‘static _ForwardIterator std::__uninitialized_copy<_TrivialValueTypes>::__uninit_copy(_InputIterator, _InputIterator, _ForwardIterator) [with _InputIterator = __gnu_cxx::__normal_iterator<const sict::CustomerOrder*, std::vector<sict::CustomerOrder> >; _ForwardIterator = sict::CustomerOrder*; bool _TrivialValueTypes = false]’
+/usr/include/c++/8.2.1/bits/stl_uninitialized.h:134:15:   required from ‘_ForwardIterator std::uninitialized_copy(_InputIterator, _InputIterator, _ForwardIterator) [with _InputIterator = __gnu_cxx::__normal_iterator<const sict::CustomerOrder*, std::vector<sict::CustomerOrder> >; _ForwardIterator = sict::CustomerOrder*]’
+/usr/include/c++/8.2.1/bits/stl_uninitialized.h:289:37:   required from ‘_ForwardIterator std::__uninitialized_copy_a(_InputIterator, _InputIterator, _ForwardIterator, std::allocator<_Tp>&) [with _InputIterator = __gnu_cxx::__normal_iterator<const sict::CustomerOrder*, std::vector<sict::CustomerOrder> >; _ForwardIterator = sict::CustomerOrder*; _Tp = sict::CustomerOrder]’
+/usr/include/c++/8.2.1/bits/stl_vector.h:1401:35:   required from ‘std::vector<_Tp, _Alloc>::pointer std::vector<_Tp, _Alloc>::_M_allocate_and_copy(std::vector<_Tp, _Alloc>::size_type, _ForwardIterator, _ForwardIterator) [with _ForwardIterator = __gnu_cxx::__normal_iterator<const sict::CustomerOrder*, std::vector<sict::CustomerOrder> >; _Tp = sict::CustomerOrder; _Alloc = std::allocator<sict::CustomerOrder>; std::vector<_Tp, _Alloc>::pointer = sict::CustomerOrder*; std::vector<_Tp, _Alloc>::size_type = long unsigned int]’
+/usr/include/c++/8.2.1/bits/vector.tcc:214:16:   required from ‘std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = sict::CustomerOrder; _Alloc = std::allocator<sict::CustomerOrder>]’
+LineManager.cpp:8:21:   required from here
+/usr/include/c++/8.2.1/bits/stl_construct.h:75:7: error: use of deleted function ‘sict::CustomerOrder::CustomerOrder(const sict::CustomerOrder&)’
+     { ::new(static_cast<void*>(__p)) _T1(std::forward<_Args>(__args)...); }
+       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

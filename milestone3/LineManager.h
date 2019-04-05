@@ -12,7 +12,10 @@ namespace sict
     {
         std::vector<Station*> myStation;
         std::vector<CustomerOrder> myCustomerOrder;
-        std::vector<int> orderOfStations;
+        std::vector<size_t> myIndexes;
+        int startingVal{0};
+        std::ostream* myOutputStream;
+        size_t secondVal{0};
     public:
         LineManager(std::vector<Station*> &incomingStationAddr, std::vector<size_t> &incomingsizetobjects, std::vector<CustomerOrder> &incomingCustomerOrders, int index, std::ostream& os);
         void display(std::ostream& os) const;
