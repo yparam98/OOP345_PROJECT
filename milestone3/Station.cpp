@@ -39,8 +39,7 @@ namespace sict
     {
         /* – a forwarding query that returns a reference 
         to the name of the ItemSet sub-object. */
-
-        return myItemSet->getName();            
+        return myItemSet->getName();
     }
 
     bool Station::hasAnOrderToRelease() const

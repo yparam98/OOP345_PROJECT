@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 			os << "================================================\n";
 			os << std::endl;
 			a.run(os);
-			os << "\nAssembly Line Configuration and Processing Complete\n";
+			os << "\nAssembly Line Configuration and Processing Complete\n";  
 		}
 	}
 	catch (const std::string& str) {
