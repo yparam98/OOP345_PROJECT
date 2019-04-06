@@ -14,35 +14,43 @@ namespace sict
     {
         customerName.clear();
         assembledProduct.clear();
-        ItemInfo->itemName.clear();        
+        ItemInfo->itemName.clear();  
+        subCounter = 0;      
     }
 
     //one argument constructor, initializes objects based on incoming string
     CustomerOrder::CustomerOrder(const std::string& incomingStr)
     {
         size_t beginningOfStr = 0;
-		size_t positionOfFirstDelim = 0;
-		size_t positionOfSecondDelim = 0;
+		// size_t positionOfFirstDelim = 0;
+		// size_t positionOfSecondDelim = 0;
 		
-        positionOfFirstDelim = incomingStr.find(this->helperObject.getDelimiter());
-		std::string newStr = incomingStr.substr(positionOfFirstDelim + 1, incomingStr.length());
-		positionOfSecondDelim = newStr.find_first_of(this->helperObject.getDelimiter());	
-		std::string newStr1 = newStr.substr(positionOfSecondDelim + 1, newStr.length());
+        // positionOfFirstDelim = incomingStr.find(this->helperObject.getDelimiter());
+		// std::string newStr = incomingStr.substr(positionOfFirstDelim + 1, incomingStr.length());
+		// positionOfSecondDelim = newStr.find_first_of(this->helperObject.getDelimiter());	
+		// std::string newStr1 = newStr.substr(positionOfSecondDelim + 1, newStr.length());
 		
         try
         {
-            this->customerName = this->helperObject.extractToken(incomingStr,beginningOfStr);
-            this->assembledProduct = this->helperObject.extractToken(newStr,beginningOfStr);
+            customerName = helperObject.extractToken(incomingStr,beginningOfStr);
+            assembledProduct = helperObject.extractToken(incomingStr,beginningOfStr);
             {
-                size_t pos{0};
-                newStr1 += '|';
-                while ((pos = newStr1.find(this->helperObject.getDelimiter())) != std::string::npos) 
-                {
-                    ItemInfo[subCounter++].itemName = this->helperObject.extractToken(newStr1, beginningOfStr); 
-                    newStr1.erase(0, pos+1); 
+                //size_t pos{0};
+                //newStr1 += '|';
+                bool triggered;
+                while(ItemInfo[subCounter].itemName == "" || triggered) {
+                    try
+                    {
+                        ItemInfo[subCounter++].itemName = helperObject.extractToken(incomingStr, beginningOfStr);
+                    }
+                    catch(...)
+                    {
+                        triggered = true;
+                    }
+                    
                 }
             }
-			this->helperObject.setFieldWidth(customerName.length()+2);
+			helperObject.setFieldWidth(customerName.length()+2);
         }
         catch(const char* incomingErrorMessage)
         {

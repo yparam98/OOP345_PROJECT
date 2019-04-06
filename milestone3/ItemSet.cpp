@@ -19,22 +19,12 @@ namespace sict
 	ItemSet::ItemSet(std::string & incomingStr)
 	{
 		size_t beginningOfStr = 0;
-		size_t positionOfFirstDelim = 0;
-		size_t positionOfSecondDelim = 0;
-		size_t positionOfThirdDelim = 0;
-
-		positionOfFirstDelim = incomingStr.find(helper.getDelimiter());
-		std::string newStr = incomingStr.substr(positionOfFirstDelim + 1, incomingStr.length());
-		positionOfSecondDelim = newStr.find_first_of(helper.getDelimiter());	
-		std::string newStr1 = newStr.substr(positionOfSecondDelim + 1, newStr.length());
-		positionOfThirdDelim = incomingStr.rfind(helper.getDelimiter());
-
 		try 
 		{
 			this->myName = helper.extractToken(incomingStr, beginningOfStr);
-			this->mySerialNum = std::stol(helper.extractToken(newStr, beginningOfStr));
-			this->myQuantity = std::stoi(helper.extractToken(newStr1, beginningOfStr));
-			this->myDescription = incomingStr.substr(positionOfThirdDelim + 1, incomingStr.length());
+			this->mySerialNum = std::stol(helper.extractToken(incomingStr, beginningOfStr));
+			this->myQuantity = std::stoi(helper.extractToken(incomingStr, beginningOfStr));
+			this->myDescription = helper.extractToken(incomingStr, beginningOfStr);
 		}
 		catch (const char* errMsg) 
 		{
