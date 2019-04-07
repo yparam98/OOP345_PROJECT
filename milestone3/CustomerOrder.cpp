@@ -22,32 +22,23 @@ namespace sict
     CustomerOrder::CustomerOrder(const std::string& incomingStr)
     {
         size_t beginningOfStr = 0;
-		// size_t positionOfFirstDelim = 0;
-		// size_t positionOfSecondDelim = 0;
-		
-        // positionOfFirstDelim = incomingStr.find(this->helperObject.getDelimiter());
-		// std::string newStr = incomingStr.substr(positionOfFirstDelim + 1, incomingStr.length());
-		// positionOfSecondDelim = newStr.find_first_of(this->helperObject.getDelimiter());	
-		// std::string newStr1 = newStr.substr(positionOfSecondDelim + 1, newStr.length());
 		
         try
         {
             customerName = helperObject.extractToken(incomingStr,beginningOfStr);
             assembledProduct = helperObject.extractToken(incomingStr,beginningOfStr);
             {
-                //size_t pos{0};
-                //newStr1 += '|';
-                bool triggered;
-                while(ItemInfo[subCounter].itemName == "" || triggered) {
+                bool triggered{false};
+                while(! triggered) 
+                {
                     try
                     {
                         ItemInfo[subCounter++].itemName = helperObject.extractToken(incomingStr, beginningOfStr);
                     }
-                    catch(...)
+                    catch (...)
                     {
                         triggered = true;
                     }
-                    
                 }
             }
 			helperObject.setFieldWidth(customerName.length()+2);

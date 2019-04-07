@@ -27,7 +27,7 @@ namespace sict
 			setFieldWidth(tempStr.length());
 		}
 		
-		if ((str.at(positionOfDelim + 1) != '\n') && (str.at(positionOfDelim + 1) != getDelimiter())) // This function returns in next_pos the position of the next token in the string if one exists.
+		if ((str.at(positionOfDelim + 1) != '\0') && (str.at(positionOfDelim + 1) != getDelimiter()) && (positionOfDelim != std::string::npos)) // This function returns in next_pos the position of the next token in the string if one exists.
 		{
 			next_pos = positionOfDelim + 1;
 		}	
