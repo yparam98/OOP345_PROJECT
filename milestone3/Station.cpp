@@ -84,7 +84,7 @@ namespace sict
         return *this;
     }
 
-    bool Station::pop(CustomerOrder &ready)
+    bool Station::pop(CustomerOrder& ready)
     {
         /* a modifier that receives an lvalue reference to a customer 
         order, removes the order at the front of the queue and moves 
@@ -95,13 +95,15 @@ namespace sict
 
         // ask prof for help 
 
-        myCustomerOrder.pop_front();
+        
+        
+        myCustomerOrder.pop_front(); // remove order @ front of queue
          
-        if (ready.isFilled())
+        if (ready.isFilled()) // check if filled
         {
             return true;
         }
-        else if (myCustomerOrder.size() == 0)
+        else if (myCustomerOrder.size() == 0) // check if queue empty
         {
             return false;
         }
