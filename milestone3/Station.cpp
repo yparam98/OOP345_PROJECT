@@ -101,7 +101,7 @@ namespace sict
 		  
 	// how do I remove an order from a queue, when the only thing I recieve is a reference to a CustomerOrder object!?!?!?      
         
-        myCustomerOrder.pop_front(); // remove order @ front of queue
+        myCustomerOrder.pop_front(); // remove order @ front of queue, BUT... the "ready" needs to be somewhere involved in this
          
         if (ready.isFilled()) // check if filled
         {
