@@ -98,7 +98,8 @@ namespace sict
 	// recieve: reference to a customer order object
 	// return: boolean value stating order filled or not
 	// do: remove order @ front of queue, move to calling function
-		        
+		  
+	// how do I remove an order from a queue, when the only thing I recieve is a reference to a CustomerOrder object!?!?!?      
         
         myCustomerOrder.pop_front(); // remove order @ front of queue
          
