@@ -95,7 +95,10 @@ namespace sict
 
         // ask prof for help 
 
-        
+	// recieve: reference to a customer order object
+	// return: boolean value stating order filled or not
+	// do: remove order @ front of queue, move to calling function
+		        
         
         myCustomerOrder.pop_front(); // remove order @ front of queue
          
