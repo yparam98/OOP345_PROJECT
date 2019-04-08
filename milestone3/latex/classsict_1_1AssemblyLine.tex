@@ -1,26 +1,155 @@
 \hypertarget{classsict_1_1AssemblyLine}{}\section{sict\+::Assembly\+Line Class Reference}
 \label{classsict_1_1AssemblyLine}\index{sict::AssemblyLine@{sict::AssemblyLine}}
+
+
+{\ttfamily \#include $<$Assembly\+Line.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classsict_1_1AssemblyLine_a4474cdbd038302bff4c2156378885b1e}\label{classsict_1_1AssemblyLine_a4474cdbd038302bff4c2156378885b1e}} 
-{\bfseries Assembly\+Line} (char $\ast$filename\mbox{[}$\,$\mbox{]}, int nfiles)
+\mbox{\hyperlink{classsict_1_1AssemblyLine_a4474cdbd038302bff4c2156378885b1e}{Assembly\+Line}} (char $\ast$filename\mbox{[}$\,$\mbox{]}, int nfiles)
 \item 
-\mbox{\Hypertarget{classsict_1_1AssemblyLine_a6262c74cb2d0a5c47cec2552596d8682}\label{classsict_1_1AssemblyLine_a6262c74cb2d0a5c47cec2552596d8682}} 
-void {\bfseries load\+Inventory} (std\+::ostream \&os)
+void \mbox{\hyperlink{classsict_1_1AssemblyLine_a6262c74cb2d0a5c47cec2552596d8682}{load\+Inventory}} (std\+::ostream \&os)
 \item 
-\mbox{\Hypertarget{classsict_1_1AssemblyLine_aa8f4560c9a29e2a623d2f5c661b26c94}\label{classsict_1_1AssemblyLine_aa8f4560c9a29e2a623d2f5c661b26c94}} 
-void {\bfseries load\+Orders} (std\+::ostream \&os)
+void \mbox{\hyperlink{classsict_1_1AssemblyLine_aa8f4560c9a29e2a623d2f5c661b26c94}{load\+Orders}} (std\+::ostream \&os)
 \item 
-\mbox{\Hypertarget{classsict_1_1AssemblyLine_aa5df8cd3a319d7d1cb81ced7982d406f}\label{classsict_1_1AssemblyLine_aa5df8cd3a319d7d1cb81ced7982d406f}} 
-void {\bfseries configure\+Line} (std\+::ostream \&os)
+void \mbox{\hyperlink{classsict_1_1AssemblyLine_aa5df8cd3a319d7d1cb81ced7982d406f}{configure\+Line}} (std\+::ostream \&os)
 \item 
-\mbox{\Hypertarget{classsict_1_1AssemblyLine_a4aa829576688cb8713ad66c1e2075cd9}\label{classsict_1_1AssemblyLine_a4aa829576688cb8713ad66c1e2075cd9}} 
-void {\bfseries run} (std\+::ostream \&os)
+void \mbox{\hyperlink{classsict_1_1AssemblyLine_a4aa829576688cb8713ad66c1e2075cd9}{run}} (std\+::ostream \&os)
 \end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classsict_1_1ItemSet}{Item\+Set}} $>$ \mbox{\hyperlink{classsict_1_1AssemblyLine_a482a0be07bd3d66ad42d4ec7ae8f9af5}{inventory}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classsict_1_1CustomerOrder}{Customer\+Order}} $>$ \mbox{\hyperlink{classsict_1_1AssemblyLine_a45c7d3f30a5d67fd3259786d3e7ca676}{orders}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classsict_1_1Station}{Station}} $\ast$ $>$ \mbox{\hyperlink{classsict_1_1AssemblyLine_ac65838e99087cdd0df9d172eb6b2746b}{line}}
+\item 
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{classsict_1_1AssemblyLine_a6e8ed8ddd4f3937fa0999fe632c3e755}{next\+Station}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classsict_1_1AssemblyLine_a8672ba6fbf42ecaa6fad075369c57c25}{first\+Station}} \{ 0u \}
+\item 
+const char $\ast$ \mbox{\hyperlink{classsict_1_1AssemblyLine_abec155f7589eac1213d0cc980887e8ed}{f\+Inventory}} \{ nullptr \}
+\item 
+const char $\ast$ \mbox{\hyperlink{classsict_1_1AssemblyLine_a11b6bd4f8bb535f5a8caf57d45d9c6d1}{f\+Orders}} \{ nullptr \}
+\item 
+const char $\ast$ \mbox{\hyperlink{classsict_1_1AssemblyLine_a67bfb258955a9e661025f7ad1a6754a7}{f\+Line}} \{ nullptr \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classsict_1_1AssemblyLine_a4474cdbd038302bff4c2156378885b1e}\label{classsict_1_1AssemblyLine_a4474cdbd038302bff4c2156378885b1e}} 
+\index{sict::AssemblyLine@{sict::AssemblyLine}!AssemblyLine@{AssemblyLine}}
+\index{AssemblyLine@{AssemblyLine}!sict::AssemblyLine@{sict::AssemblyLine}}
+\subsubsection{\texorpdfstring{AssemblyLine()}{AssemblyLine()}}
+{\footnotesize\ttfamily sict\+::\+Assembly\+Line\+::\+Assembly\+Line (\begin{DoxyParamCaption}\item[{char $\ast$}]{filename\mbox{[}$\,$\mbox{]},  }\item[{int}]{nfiles }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classsict_1_1AssemblyLine_aa5df8cd3a319d7d1cb81ced7982d406f}\label{classsict_1_1AssemblyLine_aa5df8cd3a319d7d1cb81ced7982d406f}} 
+\index{sict::AssemblyLine@{sict::AssemblyLine}!configureLine@{configureLine}}
+\index{configureLine@{configureLine}!sict::AssemblyLine@{sict::AssemblyLine}}
+\subsubsection{\texorpdfstring{configureLine()}{configureLine()}}
+{\footnotesize\ttfamily void sict\+::\+Assembly\+Line\+::configure\+Line (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsict_1_1AssemblyLine_aa5df8cd3a319d7d1cb81ced7982d406f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classsict_1_1AssemblyLine_a6262c74cb2d0a5c47cec2552596d8682}\label{classsict_1_1AssemblyLine_a6262c74cb2d0a5c47cec2552596d8682}} 
+\index{sict::AssemblyLine@{sict::AssemblyLine}!loadInventory@{loadInventory}}
+\index{loadInventory@{loadInventory}!sict::AssemblyLine@{sict::AssemblyLine}}
+\subsubsection{\texorpdfstring{loadInventory()}{loadInventory()}}
+{\footnotesize\ttfamily void sict\+::\+Assembly\+Line\+::load\+Inventory (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classsict_1_1AssemblyLine_aa8f4560c9a29e2a623d2f5c661b26c94}\label{classsict_1_1AssemblyLine_aa8f4560c9a29e2a623d2f5c661b26c94}} 
+\index{sict::AssemblyLine@{sict::AssemblyLine}!loadOrders@{loadOrders}}
+\index{loadOrders@{loadOrders}!sict::AssemblyLine@{sict::AssemblyLine}}
+\subsubsection{\texorpdfstring{loadOrders()}{loadOrders()}}
+{\footnotesize\ttfamily void sict\+::\+Assembly\+Line\+::load\+Orders (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsict_1_1AssemblyLine_aa8f4560c9a29e2a623d2f5c661b26c94_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classsict_1_1AssemblyLine_a4aa829576688cb8713ad66c1e2075cd9}\label{classsict_1_1AssemblyLine_a4aa829576688cb8713ad66c1e2075cd9}} 
+\index{sict::AssemblyLine@{sict::AssemblyLine}!run@{run}}
+\index{run@{run}!sict::AssemblyLine@{sict::AssemblyLine}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void sict\+::\+Assembly\+Line\+::run (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsict_1_1AssemblyLine_a4aa829576688cb8713ad66c1e2075cd9_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classsict_1_1AssemblyLine_abec155f7589eac1213d0cc980887e8ed}\label{classsict_1_1AssemblyLine_abec155f7589eac1213d0cc980887e8ed}} 
+\index{sict::AssemblyLine@{sict::AssemblyLine}!fInventory@{fInventory}}
+\index{fInventory@{fInventory}!sict::AssemblyLine@{sict::AssemblyLine}}
+\subsubsection{\texorpdfstring{fInventory}{fInventory}}
+{\footnotesize\ttfamily const char$\ast$ sict\+::\+Assembly\+Line\+::f\+Inventory \{ nullptr \}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classsict_1_1AssemblyLine_a8672ba6fbf42ecaa6fad075369c57c25}\label{classsict_1_1AssemblyLine_a8672ba6fbf42ecaa6fad075369c57c25}} 
+\index{sict::AssemblyLine@{sict::AssemblyLine}!firstStation@{firstStation}}
+\index{firstStation@{firstStation}!sict::AssemblyLine@{sict::AssemblyLine}}
+\subsubsection{\texorpdfstring{firstStation}{firstStation}}
+{\footnotesize\ttfamily size\+\_\+t sict\+::\+Assembly\+Line\+::first\+Station \{ 0u \}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classsict_1_1AssemblyLine_a67bfb258955a9e661025f7ad1a6754a7}\label{classsict_1_1AssemblyLine_a67bfb258955a9e661025f7ad1a6754a7}} 
+\index{sict::AssemblyLine@{sict::AssemblyLine}!fLine@{fLine}}
+\index{fLine@{fLine}!sict::AssemblyLine@{sict::AssemblyLine}}
+\subsubsection{\texorpdfstring{fLine}{fLine}}
+{\footnotesize\ttfamily const char$\ast$ sict\+::\+Assembly\+Line\+::f\+Line \{ nullptr \}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classsict_1_1AssemblyLine_a11b6bd4f8bb535f5a8caf57d45d9c6d1}\label{classsict_1_1AssemblyLine_a11b6bd4f8bb535f5a8caf57d45d9c6d1}} 
+\index{sict::AssemblyLine@{sict::AssemblyLine}!fOrders@{fOrders}}
+\index{fOrders@{fOrders}!sict::AssemblyLine@{sict::AssemblyLine}}
+\subsubsection{\texorpdfstring{fOrders}{fOrders}}
+{\footnotesize\ttfamily const char$\ast$ sict\+::\+Assembly\+Line\+::f\+Orders \{ nullptr \}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classsict_1_1AssemblyLine_a482a0be07bd3d66ad42d4ec7ae8f9af5}\label{classsict_1_1AssemblyLine_a482a0be07bd3d66ad42d4ec7ae8f9af5}} 
+\index{sict::AssemblyLine@{sict::AssemblyLine}!inventory@{inventory}}
+\index{inventory@{inventory}!sict::AssemblyLine@{sict::AssemblyLine}}
+\subsubsection{\texorpdfstring{inventory}{inventory}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classsict_1_1ItemSet}{Item\+Set}}$>$ sict\+::\+Assembly\+Line\+::inventory\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classsict_1_1AssemblyLine_ac65838e99087cdd0df9d172eb6b2746b}\label{classsict_1_1AssemblyLine_ac65838e99087cdd0df9d172eb6b2746b}} 
+\index{sict::AssemblyLine@{sict::AssemblyLine}!line@{line}}
+\index{line@{line}!sict::AssemblyLine@{sict::AssemblyLine}}
+\subsubsection{\texorpdfstring{line}{line}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classsict_1_1Station}{Station}}$\ast$$>$ sict\+::\+Assembly\+Line\+::line\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classsict_1_1AssemblyLine_a6e8ed8ddd4f3937fa0999fe632c3e755}\label{classsict_1_1AssemblyLine_a6e8ed8ddd4f3937fa0999fe632c3e755}} 
+\index{sict::AssemblyLine@{sict::AssemblyLine}!nextStation@{nextStation}}
+\index{nextStation@{nextStation}!sict::AssemblyLine@{sict::AssemblyLine}}
+\subsubsection{\texorpdfstring{nextStation}{nextStation}}
+{\footnotesize\ttfamily std\+::vector$<$size\+\_\+t$>$ sict\+::\+Assembly\+Line\+::next\+Station\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classsict_1_1AssemblyLine_a45c7d3f30a5d67fd3259786d3e7ca676}\label{classsict_1_1AssemblyLine_a45c7d3f30a5d67fd3259786d3e7ca676}} 
+\index{sict::AssemblyLine@{sict::AssemblyLine}!orders@{orders}}
+\index{orders@{orders}!sict::AssemblyLine@{sict::AssemblyLine}}
+\subsubsection{\texorpdfstring{orders}{orders}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classsict_1_1CustomerOrder}{Customer\+Order}}$>$ sict\+::\+Assembly\+Line\+::orders\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Assembly\+Line.\+h\item 
-Assembly\+Line.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{AssemblyLine_8h}{Assembly\+Line.\+h}}\item 
+\mbox{\hyperlink{AssemblyLine_8cpp}{Assembly\+Line.\+cpp}}\end{DoxyCompactItemize}

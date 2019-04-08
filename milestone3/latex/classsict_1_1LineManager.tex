@@ -1,20 +1,99 @@
 \hypertarget{classsict_1_1LineManager}{}\section{sict\+::Line\+Manager Class Reference}
 \label{classsict_1_1LineManager}\index{sict::LineManager@{sict::LineManager}}
+
+
+{\ttfamily \#include $<$Line\+Manager.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classsict_1_1LineManager_a63839df687765c8c083a9e38265b71ab}\label{classsict_1_1LineManager_a63839df687765c8c083a9e38265b71ab}} 
-{\bfseries Line\+Manager} (std\+::vector$<$ \mbox{\hyperlink{classsict_1_1Station}{Station}} $\ast$ $>$ \&incoming\+Station\+Addr, std\+::vector$<$ size\+\_\+t $>$ \&incomingsizetobjects, std\+::vector$<$ \mbox{\hyperlink{classsict_1_1CustomerOrder}{Customer\+Order}} $>$ \&incoming\+Customer\+Orders, int index, std\+::ostream \&os)
+\mbox{\hyperlink{classsict_1_1LineManager_a63839df687765c8c083a9e38265b71ab}{Line\+Manager}} (std\+::vector$<$ \mbox{\hyperlink{classsict_1_1Station}{Station}} $\ast$ $>$ \&incoming\+Station\+Addr, std\+::vector$<$ size\+\_\+t $>$ \&incomingsizetobjects, std\+::vector$<$ \mbox{\hyperlink{classsict_1_1CustomerOrder}{Customer\+Order}} $>$ \&incoming\+Customer\+Orders, int index, std\+::ostream \&os)
 \item 
-\mbox{\Hypertarget{classsict_1_1LineManager_ad4d40fef3cc77b5890654f95cf90b595}\label{classsict_1_1LineManager_ad4d40fef3cc77b5890654f95cf90b595}} 
-void {\bfseries display} (std\+::ostream \&os) const
+void \mbox{\hyperlink{classsict_1_1LineManager_ad4d40fef3cc77b5890654f95cf90b595}{display}} (std\+::ostream \&os) const
 \item 
-\mbox{\Hypertarget{classsict_1_1LineManager_ae50b0c9cc0130ddcf0435ff9b9b2a919}\label{classsict_1_1LineManager_ae50b0c9cc0130ddcf0435ff9b9b2a919}} 
-bool {\bfseries run} (std\+::ostream \&os)
+bool \mbox{\hyperlink{classsict_1_1LineManager_ae50b0c9cc0130ddcf0435ff9b9b2a919}{run}} (std\+::ostream \&os)
 \end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classsict_1_1Station}{Station}} $\ast$ $>$ \mbox{\hyperlink{classsict_1_1LineManager_ae082231b024e726fa5185553fc27eefc}{my\+Station}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classsict_1_1CustomerOrder}{Customer\+Order}} $>$ \mbox{\hyperlink{classsict_1_1LineManager_a537ba2999ee2503a59f45af3d6480c77}{my\+Customer\+Order}}
+\item 
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{classsict_1_1LineManager_a6f84418974d3916ed2dd6785ced4d865}{my\+Indexes}}
+\item 
+int \mbox{\hyperlink{classsict_1_1LineManager_a117d40e5cf7ee1a89b163b2bcf555ed6}{starting\+Val}} \{0\}
+\item 
+std\+::ostream $\ast$ \mbox{\hyperlink{classsict_1_1LineManager_a5aa1aa1aa5ef3f8208eee1f6ae0f1487}{my\+Output\+Stream}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classsict_1_1LineManager_ab960db31b3db6786a14b56927168d92b}{second\+Val}} \{0\}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classsict_1_1LineManager_a63839df687765c8c083a9e38265b71ab}\label{classsict_1_1LineManager_a63839df687765c8c083a9e38265b71ab}} 
+\index{sict::LineManager@{sict::LineManager}!LineManager@{LineManager}}
+\index{LineManager@{LineManager}!sict::LineManager@{sict::LineManager}}
+\subsubsection{\texorpdfstring{LineManager()}{LineManager()}}
+{\footnotesize\ttfamily sict\+::\+Line\+Manager\+::\+Line\+Manager (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classsict_1_1Station}{Station}} $\ast$ $>$ \&}]{incoming\+Station\+Addr,  }\item[{std\+::vector$<$ size\+\_\+t $>$ \&}]{incomingsizetobjects,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classsict_1_1CustomerOrder}{Customer\+Order}} $>$ \&}]{incoming\+Customer\+Orders,  }\item[{int}]{index,  }\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classsict_1_1LineManager_ad4d40fef3cc77b5890654f95cf90b595}\label{classsict_1_1LineManager_ad4d40fef3cc77b5890654f95cf90b595}} 
+\index{sict::LineManager@{sict::LineManager}!display@{display}}
+\index{display@{display}!sict::LineManager@{sict::LineManager}}
+\subsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void sict\+::\+Line\+Manager\+::display (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classsict_1_1LineManager_ae50b0c9cc0130ddcf0435ff9b9b2a919}\label{classsict_1_1LineManager_ae50b0c9cc0130ddcf0435ff9b9b2a919}} 
+\index{sict::LineManager@{sict::LineManager}!run@{run}}
+\index{run@{run}!sict::LineManager@{sict::LineManager}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily bool sict\+::\+Line\+Manager\+::run (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classsict_1_1LineManager_a537ba2999ee2503a59f45af3d6480c77}\label{classsict_1_1LineManager_a537ba2999ee2503a59f45af3d6480c77}} 
+\index{sict::LineManager@{sict::LineManager}!myCustomerOrder@{myCustomerOrder}}
+\index{myCustomerOrder@{myCustomerOrder}!sict::LineManager@{sict::LineManager}}
+\subsubsection{\texorpdfstring{myCustomerOrder}{myCustomerOrder}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classsict_1_1CustomerOrder}{Customer\+Order}}$>$ sict\+::\+Line\+Manager\+::my\+Customer\+Order\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classsict_1_1LineManager_a6f84418974d3916ed2dd6785ced4d865}\label{classsict_1_1LineManager_a6f84418974d3916ed2dd6785ced4d865}} 
+\index{sict::LineManager@{sict::LineManager}!myIndexes@{myIndexes}}
+\index{myIndexes@{myIndexes}!sict::LineManager@{sict::LineManager}}
+\subsubsection{\texorpdfstring{myIndexes}{myIndexes}}
+{\footnotesize\ttfamily std\+::vector$<$size\+\_\+t$>$ sict\+::\+Line\+Manager\+::my\+Indexes\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classsict_1_1LineManager_a5aa1aa1aa5ef3f8208eee1f6ae0f1487}\label{classsict_1_1LineManager_a5aa1aa1aa5ef3f8208eee1f6ae0f1487}} 
+\index{sict::LineManager@{sict::LineManager}!myOutputStream@{myOutputStream}}
+\index{myOutputStream@{myOutputStream}!sict::LineManager@{sict::LineManager}}
+\subsubsection{\texorpdfstring{myOutputStream}{myOutputStream}}
+{\footnotesize\ttfamily std\+::ostream$\ast$ sict\+::\+Line\+Manager\+::my\+Output\+Stream\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classsict_1_1LineManager_ae082231b024e726fa5185553fc27eefc}\label{classsict_1_1LineManager_ae082231b024e726fa5185553fc27eefc}} 
+\index{sict::LineManager@{sict::LineManager}!myStation@{myStation}}
+\index{myStation@{myStation}!sict::LineManager@{sict::LineManager}}
+\subsubsection{\texorpdfstring{myStation}{myStation}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classsict_1_1Station}{Station}}$\ast$$>$ sict\+::\+Line\+Manager\+::my\+Station\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classsict_1_1LineManager_ab960db31b3db6786a14b56927168d92b}\label{classsict_1_1LineManager_ab960db31b3db6786a14b56927168d92b}} 
+\index{sict::LineManager@{sict::LineManager}!secondVal@{secondVal}}
+\index{secondVal@{secondVal}!sict::LineManager@{sict::LineManager}}
+\subsubsection{\texorpdfstring{secondVal}{secondVal}}
+{\footnotesize\ttfamily size\+\_\+t sict\+::\+Line\+Manager\+::second\+Val \{0\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classsict_1_1LineManager_a117d40e5cf7ee1a89b163b2bcf555ed6}\label{classsict_1_1LineManager_a117d40e5cf7ee1a89b163b2bcf555ed6}} 
+\index{sict::LineManager@{sict::LineManager}!startingVal@{startingVal}}
+\index{startingVal@{startingVal}!sict::LineManager@{sict::LineManager}}
+\subsubsection{\texorpdfstring{startingVal}{startingVal}}
+{\footnotesize\ttfamily int sict\+::\+Line\+Manager\+::starting\+Val \{0\}\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Line\+Manager.\+h\item 
-Line\+Manager.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{LineManager_8h}{Line\+Manager.\+h}}\item 
+\mbox{\hyperlink{LineManager_8cpp}{Line\+Manager.\+cpp}}\end{DoxyCompactItemize}

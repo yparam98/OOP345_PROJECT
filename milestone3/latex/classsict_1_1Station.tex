@@ -1,38 +1,165 @@
 \hypertarget{classsict_1_1Station}{}\section{sict\+::Station Class Reference}
 \label{classsict_1_1Station}\index{sict::Station@{sict::Station}}
+
+
+{\ttfamily \#include $<$Station.\+h$>$}
+
+
+
+Collaboration diagram for sict\+::Station\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=177pt]{classsict_1_1Station__coll__graph}
+\end{center}
+\end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classsict_1_1Station_a95b3910ac2cf806fed948b473c870e64}\label{classsict_1_1Station_a95b3910ac2cf806fed948b473c870e64}} 
-{\bfseries Station} (std\+::string \&incoming\+String)
+\mbox{\hyperlink{classsict_1_1Station_a95b3910ac2cf806fed948b473c870e64}{Station}} (std\+::string \&incoming\+String)
 \item 
-\mbox{\Hypertarget{classsict_1_1Station_a83b3f64c0c2063a730a14888869b022d}\label{classsict_1_1Station_a83b3f64c0c2063a730a14888869b022d}} 
-void {\bfseries display} (std\+::ostream \&os) const
+void \mbox{\hyperlink{classsict_1_1Station_a83b3f64c0c2063a730a14888869b022d}{display}} (std\+::ostream \&os) const
 \item 
-\mbox{\Hypertarget{classsict_1_1Station_ad81558c1e92485344e5d0b1b773b0fae}\label{classsict_1_1Station_ad81558c1e92485344e5d0b1b773b0fae}} 
-void {\bfseries fill} (std\+::ostream \&os)
+void \mbox{\hyperlink{classsict_1_1Station_ad81558c1e92485344e5d0b1b773b0fae}{fill}} (std\+::ostream \&os)
 \item 
-\mbox{\Hypertarget{classsict_1_1Station_aa35cfe52f0f33ef1399f6b4b6f5ed91f}\label{classsict_1_1Station_aa35cfe52f0f33ef1399f6b4b6f5ed91f}} 
-const std\+::string \& {\bfseries get\+Name} () const
+const std\+::string \& \mbox{\hyperlink{classsict_1_1Station_aa35cfe52f0f33ef1399f6b4b6f5ed91f}{get\+Name}} () const
 \item 
-\mbox{\Hypertarget{classsict_1_1Station_a9e892b3c93dd2163d1c6569dba6c8536}\label{classsict_1_1Station_a9e892b3c93dd2163d1c6569dba6c8536}} 
-bool {\bfseries has\+An\+Order\+To\+Release} () const
+bool \mbox{\hyperlink{classsict_1_1Station_a9e892b3c93dd2163d1c6569dba6c8536}{has\+An\+Order\+To\+Release}} () const
 \item 
-\mbox{\Hypertarget{classsict_1_1Station_ab5c0ac9d9ccdd92469542a49e3c01e05}\label{classsict_1_1Station_ab5c0ac9d9ccdd92469542a49e3c01e05}} 
-\mbox{\hyperlink{classsict_1_1Station}{Station}} \& {\bfseries operator-\/-\/} ()
+\mbox{\hyperlink{classsict_1_1Station}{Station}} \& \mbox{\hyperlink{classsict_1_1Station_ab5c0ac9d9ccdd92469542a49e3c01e05}{operator-\/-\/}} ()
 \item 
-\mbox{\Hypertarget{classsict_1_1Station_acd6e5d1500de14a981885e060b31d5ca}\label{classsict_1_1Station_acd6e5d1500de14a981885e060b31d5ca}} 
-\mbox{\hyperlink{classsict_1_1Station}{Station}} \& {\bfseries operator+=} (\mbox{\hyperlink{classsict_1_1CustomerOrder}{Customer\+Order}} \&\&order)
+\mbox{\hyperlink{classsict_1_1Station}{Station}} \& \mbox{\hyperlink{classsict_1_1Station_acd6e5d1500de14a981885e060b31d5ca}{operator+=}} (\mbox{\hyperlink{classsict_1_1CustomerOrder}{Customer\+Order}} \&\&order)
 \item 
-\mbox{\Hypertarget{classsict_1_1Station_a583745c920a8fd95aaaf84ef2d96a993}\label{classsict_1_1Station_a583745c920a8fd95aaaf84ef2d96a993}} 
-bool {\bfseries pop} (\mbox{\hyperlink{classsict_1_1CustomerOrder}{Customer\+Order}} \&ready)
+bool \mbox{\hyperlink{classsict_1_1Station_a583745c920a8fd95aaaf84ef2d96a993}{pop}} (\mbox{\hyperlink{classsict_1_1CustomerOrder}{Customer\+Order}} \&ready)
 \item 
-\mbox{\Hypertarget{classsict_1_1Station_a93da83c7e33b4b336225cc4753ee91da}\label{classsict_1_1Station_a93da83c7e33b4b336225cc4753ee91da}} 
-void {\bfseries validate} (std\+::ostream \&os) const
+void \mbox{\hyperlink{classsict_1_1Station_a93da83c7e33b4b336225cc4753ee91da}{validate}} (std\+::ostream \&os) const
 \end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::deque$<$ \mbox{\hyperlink{classsict_1_1CustomerOrder}{Customer\+Order}} $\ast$ $>$ \mbox{\hyperlink{classsict_1_1Station_a82773fd8f7c3e60dfdec18fb9cde0e23}{my\+Customer\+Order}}
+\item 
+\mbox{\hyperlink{classsict_1_1ItemSet}{Item\+Set}} $\ast$ \mbox{\hyperlink{classsict_1_1Station_aaf7c62274d4e6cd3c9f76d7f2f7625b6}{my\+Item\+Set}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classsict_1_1Station_a95b3910ac2cf806fed948b473c870e64}\label{classsict_1_1Station_a95b3910ac2cf806fed948b473c870e64}} 
+\index{sict::Station@{sict::Station}!Station@{Station}}
+\index{Station@{Station}!sict::Station@{sict::Station}}
+\subsubsection{\texorpdfstring{Station()}{Station()}}
+{\footnotesize\ttfamily sict\+::\+Station\+::\+Station (\begin{DoxyParamCaption}\item[{std\+::string \&}]{incoming\+String }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classsict_1_1Station_a83b3f64c0c2063a730a14888869b022d}\label{classsict_1_1Station_a83b3f64c0c2063a730a14888869b022d}} 
+\index{sict::Station@{sict::Station}!display@{display}}
+\index{display@{display}!sict::Station@{sict::Station}}
+\subsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void sict\+::\+Station\+::display (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsict_1_1Station_a83b3f64c0c2063a730a14888869b022d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classsict_1_1Station_ad81558c1e92485344e5d0b1b773b0fae}\label{classsict_1_1Station_ad81558c1e92485344e5d0b1b773b0fae}} 
+\index{sict::Station@{sict::Station}!fill@{fill}}
+\index{fill@{fill}!sict::Station@{sict::Station}}
+\subsubsection{\texorpdfstring{fill()}{fill()}}
+{\footnotesize\ttfamily void sict\+::\+Station\+::fill (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classsict_1_1Station_aa35cfe52f0f33ef1399f6b4b6f5ed91f}\label{classsict_1_1Station_aa35cfe52f0f33ef1399f6b4b6f5ed91f}} 
+\index{sict::Station@{sict::Station}!getName@{getName}}
+\index{getName@{getName}!sict::Station@{sict::Station}}
+\subsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily const std\+::string \& sict\+::\+Station\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsict_1_1Station_aa35cfe52f0f33ef1399f6b4b6f5ed91f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classsict_1_1Station_a9e892b3c93dd2163d1c6569dba6c8536}\label{classsict_1_1Station_a9e892b3c93dd2163d1c6569dba6c8536}} 
+\index{sict::Station@{sict::Station}!hasAnOrderToRelease@{hasAnOrderToRelease}}
+\index{hasAnOrderToRelease@{hasAnOrderToRelease}!sict::Station@{sict::Station}}
+\subsubsection{\texorpdfstring{hasAnOrderToRelease()}{hasAnOrderToRelease()}}
+{\footnotesize\ttfamily bool sict\+::\+Station\+::has\+An\+Order\+To\+Release (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsict_1_1Station_a9e892b3c93dd2163d1c6569dba6c8536_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classsict_1_1Station_acd6e5d1500de14a981885e060b31d5ca}\label{classsict_1_1Station_acd6e5d1500de14a981885e060b31d5ca}} 
+\index{sict::Station@{sict::Station}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!sict::Station@{sict::Station}}
+\subsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsict_1_1Station}{Station}} \& sict\+::\+Station\+::operator+= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsict_1_1CustomerOrder}{Customer\+Order}} \&\&}]{order }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classsict_1_1Station_ab5c0ac9d9ccdd92469542a49e3c01e05}\label{classsict_1_1Station_ab5c0ac9d9ccdd92469542a49e3c01e05}} 
+\index{sict::Station@{sict::Station}!operator-\/-\/@{operator-\/-\/}}
+\index{operator-\/-\/@{operator-\/-\/}!sict::Station@{sict::Station}}
+\subsubsection{\texorpdfstring{operator-\/-\/()}{operator--()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsict_1_1Station}{Station}} \& sict\+::\+Station\+::operator-\/-\/ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classsict_1_1Station_a583745c920a8fd95aaaf84ef2d96a993}\label{classsict_1_1Station_a583745c920a8fd95aaaf84ef2d96a993}} 
+\index{sict::Station@{sict::Station}!pop@{pop}}
+\index{pop@{pop}!sict::Station@{sict::Station}}
+\subsubsection{\texorpdfstring{pop()}{pop()}}
+{\footnotesize\ttfamily bool sict\+::\+Station\+::pop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classsict_1_1CustomerOrder}{Customer\+Order}} \&}]{ready }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{classsict_1_1Station_a583745c920a8fd95aaaf84ef2d96a993_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classsict_1_1Station_a93da83c7e33b4b336225cc4753ee91da}\label{classsict_1_1Station_a93da83c7e33b4b336225cc4753ee91da}} 
+\index{sict::Station@{sict::Station}!validate@{validate}}
+\index{validate@{validate}!sict::Station@{sict::Station}}
+\subsubsection{\texorpdfstring{validate()}{validate()}}
+{\footnotesize\ttfamily void sict\+::\+Station\+::validate (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsict_1_1Station_a93da83c7e33b4b336225cc4753ee91da_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classsict_1_1Station_a82773fd8f7c3e60dfdec18fb9cde0e23}\label{classsict_1_1Station_a82773fd8f7c3e60dfdec18fb9cde0e23}} 
+\index{sict::Station@{sict::Station}!myCustomerOrder@{myCustomerOrder}}
+\index{myCustomerOrder@{myCustomerOrder}!sict::Station@{sict::Station}}
+\subsubsection{\texorpdfstring{myCustomerOrder}{myCustomerOrder}}
+{\footnotesize\ttfamily std\+::deque$<$\mbox{\hyperlink{classsict_1_1CustomerOrder}{Customer\+Order}}$\ast$$>$ sict\+::\+Station\+::my\+Customer\+Order\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classsict_1_1Station_aaf7c62274d4e6cd3c9f76d7f2f7625b6}\label{classsict_1_1Station_aaf7c62274d4e6cd3c9f76d7f2f7625b6}} 
+\index{sict::Station@{sict::Station}!myItemSet@{myItemSet}}
+\index{myItemSet@{myItemSet}!sict::Station@{sict::Station}}
+\subsubsection{\texorpdfstring{myItemSet}{myItemSet}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsict_1_1ItemSet}{Item\+Set}}$\ast$ sict\+::\+Station\+::my\+Item\+Set\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Station.\+h\item 
-Station.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{Station_8h}{Station.\+h}}\item 
+\mbox{\hyperlink{Station_8cpp}{Station.\+cpp}}\end{DoxyCompactItemize}
