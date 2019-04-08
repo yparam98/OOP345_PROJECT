@@ -49,16 +49,5 @@ namespace sict
 				}
 			}
 		}
-
-		// two for loops, nested
-		// 	the first one cycles through the customer orders, selecting the last one of the queue each time
-		// 		if the selected one has not been filled, then it sends it to the second for loop, cycling through each station, filling the orders
-		// 			if one of the encountered stations has an order waiting to be released, it releases the order at the station
-		// 	after processing the order through every station, then use pop_back on the customer order to remove it from the queue, making the 2nd to last customer order as the last order, and going back through the loop
-	 
-
-
-
-		
 	}
 }
