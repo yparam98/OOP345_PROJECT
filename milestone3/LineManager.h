@@ -12,6 +12,8 @@ namespace sict
     {
         std::vector<Station*> myStation;
         std::vector<CustomerOrder> myCustomerOrder;
+        std::deque<CustomerOrder> incompleteOrders;
+        std::deque<CustomerOrder> completeOrders;
         std::vector<size_t> myIndexes;
         int startingVal{0};
         std::ostream* myOutputStream;

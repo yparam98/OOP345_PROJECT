@@ -23,8 +23,37 @@ namespace sict
 		}
 	}
 
-	bool LineManager::run(std::ostream& os)
+	bool LineManager::run(std::ostream &os)
 	{
-		// need to work on this next...
+		bool notCompleted{false};
+
+		// if last customer order waiting to be filled
+		if (!myCustomerOrder[myCustomerOrder.size()].isFilled())
+		{
+			// move to starting station
+			myStation[myIndexes[0]]->pop(myCustomerOrder[0]);
+
+			for (int index = 1; index < myStation.size(); index++)
+			{
+				if (myStation[myIndexes[index]]->hasAnOrderToRelease())
+				{
+					// execute fill of assembly at each station on line
+					myStation[myIndexes[index]]->fill(os);
+				}
+				else
+				{
+					notCompleted = true;
+				}
+			}
+		}
+		if (notCompleted)
+		{
+			incompleteOrders.push_back(myCustomerOrder[myCustomerOrder.size()]);
+		}
+		else
+		{
+			completeOrders.push_back(myCustomerOrder[myCustomerOrder.size()]);
+		}
+
 	}
 }

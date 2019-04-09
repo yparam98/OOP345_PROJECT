@@ -58,30 +58,17 @@ namespace sict
 
 	bool Station::pop(CustomerOrder& ready)
 	{
-		// • bool pop(CustomerOrder& ready) – a modifier that receives an lvalue reference to a
-		// customer order, removes the order at the front of the queue and moves it to the calling
-		// function through the parameter list. This function returns true if the station filled its
-		// part of the order; false otherwise. If there are no orders in the queue, this function
-		// returns false.
-
+		if(myCustomerOrder.size() > 0)
+		{
+			ready.operator=(std::move(myCustomerOrder[0]));	
+			myCustomerOrder.pop_front();
 		
-		ready.operator=(std::move(*myCustomerOrder[0]));
-
-		myCustomerOrder.pop_front();
-
-		if (ready.isFilled()) 
-		{
-			return true;
-		}
-		else if (myCustomerOrder.size() == 0) 
-		{
-			return false;
+			return ready.isFilled() ? true : false;
 		}
 		else
 		{
 			return false;
 		}
-
 	}
 
 	void Station::validate(std::ostream &os) const
