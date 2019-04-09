@@ -16,9 +16,9 @@ namespace sict
 	{
 		if (myCustomerOrder.size() >  0) 
 		{
-			if (!myCustomerOrder[myCustomerOrder.size()]->isFilled()) 
+			if (!myCustomerOrder.back()->isFilled()) 
 			{
-				myCustomerOrder[myCustomerOrder.size()]->fillItem(*myItemSet, os); 
+				myCustomerOrder.back()->fillItem(*myItemSet, os); 
 			} 
 		}
 	}
@@ -30,7 +30,7 @@ namespace sict
 
 	bool Station::hasAnOrderToRelease() const
 	{
-		if (myCustomerOrder[0]->isFilled() || myItemSet->getQuantity() == 0) 
+		if (myCustomerOrder.front()->isFilled() || myItemSet->getQuantity() == 0) 
 		{
 			return true;
 		}
@@ -58,9 +58,9 @@ namespace sict
 
 	bool Station::pop(CustomerOrder& ready)
 	{
-		if(myCustomerOrder.size() > 0)
+		if(!myCustomerOrder.empty())
 		{
-			ready.operator=(std::move(*myCustomerOrder[0]));	
+			ready.operator=(std::move(*myCustomerOrder.front()));	
 			
 			myCustomerOrder.pop_front();
 		

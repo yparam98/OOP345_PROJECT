@@ -17,7 +17,10 @@ namespace sict
         std::vector<size_t> myIndexes;
         int startingVal{0};
         std::ostream* myOutputStream;
-        size_t secondVal{0};
+        size_t lastStation{0};
+        std::vector<sict::CustomerOrder>::iterator customerOrderIterator;
+        std::vector<sict::Station*>::iterator stationIterator;
+        size_t processedOrdersCount{0};
     public:
         LineManager(std::vector<Station*> &incomingStationAddr, std::vector<size_t> &incomingsizetobjects, std::vector<CustomerOrder> &incomingCustomerOrders, int index, std::ostream& os);
         void display(std::ostream& os) const;
