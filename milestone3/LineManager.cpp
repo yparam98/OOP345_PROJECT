@@ -28,35 +28,35 @@ namespace sict
 
 	bool LineManager::run(std::ostream &os)
 	{
-		bool notCompleted{false};
-
-		// if last customer order waiting to be filled
-		if (!myCustomerOrder[myCustomerOrder.size()].isFilled())
+		bool inCompleted{false};
+		
+		if (!myCustomerOrder[myCustomerOrder.size()-1].isFilled())
 		{
-			// move to starting station
-			myStation[myIndexes[0]]->pop(myCustomerOrder[0]);
-
-			for (int index = 1; index < myStation.size(); index++)
+			CustomerOrder newObj;
+			if (myStation[myIndexes[0]]->pop(newObj))
 			{
-				if (myStation[myIndexes[index]]->hasAnOrderToRelease())
+				for (size_t index = 1; index < myStation.size(); index++)
 				{
-					// execute fill of assembly at each station on line
-					myStation[myIndexes[index]]->fill(os);
-				}
-				else
-				{
-					notCompleted = true;
+					if (myStation[myIndexes[index]]->hasAnOrderToRelease())
+					{
+						myStation[myIndexes[index]]->fill(os);
+					}
+					else
+					{
+						inCompleted = true;
+					}					
 				}
 			}
 		}
-		if (notCompleted)
+		if (inCompleted)
 		{
-			incompleteOrders.push_back(myCustomerOrder[myCustomerOrder.size()]);
+			incompleteOrders.push_back(std::move(myCustomerOrder[myCustomerOrder.size()-1]));
+			return false;
 		}
 		else
 		{
-			completeOrders.push_back(myCustomerOrder[myCustomerOrder.size()]);
+			completeOrders.push_back(std::move(myCustomerOrder[myCustomerOrder.size()-1]));
+			return true;
 		}
-
 	}
 }

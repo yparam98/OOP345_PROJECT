@@ -60,7 +60,8 @@ namespace sict
 	{
 		if(myCustomerOrder.size() > 0)
 		{
-			ready.operator=(std::move(myCustomerOrder[0]));	
+			ready.operator=(std::move(*myCustomerOrder[0]));	
+			
 			myCustomerOrder.pop_front();
 		
 			return ready.isFilled() ? true : false;
