@@ -14,12 +14,15 @@ namespace sict
 
 	void LineManager::display(std::ostream& os) const
 	{
-		for (size_t index = 0; index < myCustomerOrder.size(); index++)
-		{
-			if (!myCustomerOrder[index].isFilled())
-			{
-				myCustomerOrder[index].display(os);
-			}
+		os << "COMPLETED ORDERS\n";
+		for (size_t index = 0; index < completeOrders.size(); index++)
+		{			
+			completeOrders[index].display(os,true);
+		}
+		os << "INCOMPLETE ORDERS\n";
+		for (size_t index = 0; index < completeOrders.size(); index++)
+		{			
+			incompleteOrders[index].display(os,true);
 		}
 	}
 
