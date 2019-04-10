@@ -9,7 +9,7 @@ namespace sict
 
 	void Station::display(std::ostream &os) const
 	{
-		myItemSet->display(os, myItemSet->getQuantity());
+		myItemSet->display(os, true);
 	}    
 
 	void Station::fill(std::ostream &os)
@@ -30,13 +30,13 @@ namespace sict
 
 	bool Station::hasAnOrderToRelease() const
 	{
-		if (myCustomerOrder.front()->isFilled() || myItemSet->getQuantity() == 0) 
-		{
-			return true;
-		}
-		else if (myCustomerOrder.size() == 0) 
+		if (myCustomerOrder.empty()) 
 		{
 			return false;
+		}
+		else if (myCustomerOrder.front()->isFilled() || myItemSet->getQuantity() == 0) 
+		{
+			return true;
 		}
 		else
 		{

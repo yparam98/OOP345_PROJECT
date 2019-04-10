@@ -14,12 +14,13 @@ namespace sict
         std::vector<CustomerOrder> myCustomerOrder;
         std::deque<CustomerOrder> incompleteOrders;
         std::deque<CustomerOrder> completeOrders;
-        std::vector<size_t> myIndexes;
+        std::deque<size_t> myIndexes;
         int startingVal{0};
         std::ostream* myOutputStream;
         size_t lastStation{0};
         std::vector<sict::CustomerOrder>::iterator customerOrderIterator;
         std::vector<sict::Station*>::iterator stationIterator;
+        //std::vector<size_t>::iterator indexIterator;
         size_t processedOrdersCount{0};
     public:
         LineManager(std::vector<Station*> &incomingStationAddr, std::vector<size_t> &incomingsizetobjects, std::vector<CustomerOrder> &incomingCustomerOrders, int index, std::ostream& os);

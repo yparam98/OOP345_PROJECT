@@ -92,7 +92,7 @@ namespace sict
     //fill item member function, fills specified item is unfilled
     void CustomerOrder::fillItem(ItemSet& item, std::ostream& os)
     {
-        for (int index = 0; index < subCounter; index++)
+        for (int index = 0; index <= subCounter; index++)
         {
             if (ItemInfo[index].itemName == item.getName())
             {
@@ -146,7 +146,7 @@ namespace sict
     bool CustomerOrder::isFilled() const
     {
         int filledCounter{0};
-        for (int index = 0; index < subCounter; index++)
+        for (int index = 0; index <= subCounter; index++)
         {
             if (ItemInfo[index].filled)
             {
@@ -163,7 +163,7 @@ namespace sict
     //query, checks if specific item is filled or not
     bool CustomerOrder::isItemFilled(const std::string& item) const
     {
-        for (int index = 0; index < subCounter; index++)
+        for (int index = 0; index <= subCounter; index++)
         {
             if (ItemInfo[index].itemName == item)
             {
@@ -192,7 +192,7 @@ namespace sict
         if (showDetail)
         {
             os << this->customerName << " [" << this->assembledProduct << "]" << std::endl;
-            for (int index = 0; index < subCounter; index++)
+            for (int index = 0; index <= subCounter; index++)
             {
                 std::string temp;
 
@@ -212,7 +212,7 @@ namespace sict
         else
         {
             os << std::left << std::setw(this->helperObject.getFieldWidth()+2) << this->customerName << " [" << this->assembledProduct << "]" << std::endl;
-            for (int index = 0; index < subCounter; index++)
+            for (int index = 0; index <= subCounter; index++)
             {
                 os << std::right << std::setw(this->helperObject.getFieldWidth()+3) << "" << ItemInfo[index].itemName << std::endl;
             }
