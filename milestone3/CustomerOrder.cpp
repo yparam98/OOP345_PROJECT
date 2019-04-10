@@ -202,9 +202,9 @@ namespace sict
                 << " - ";
 
                 if (ItemInfo[index].filled)
-                    temp = "true";
+                    temp = "FILLED";
                 else
-                    temp = "false";
+                    temp = "MISSING";
 
                 os << temp << std::endl;
             }

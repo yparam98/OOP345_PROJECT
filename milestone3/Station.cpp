@@ -30,11 +30,11 @@ namespace sict
 
 	bool Station::hasAnOrderToRelease() const
 	{
-		if (myCustomerOrder.empty()) 
+		if (myCustomerOrder.empty())
 		{
 			return false;
 		}
-		else if (myCustomerOrder.front()->isItemFilled(myItemSet->getName()) || myItemSet->getQuantity() == 0) 
+		else if (myCustomerOrder.front()->isItemFilled(myItemSet->getName()) || myItemSet->getQuantity() == 0)
 		{
 			return true;
 		}

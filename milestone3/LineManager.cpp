@@ -5,11 +5,12 @@ namespace sict
 	LineManager::LineManager(std::vector<Station*> &incomingStationAddr, std::vector<size_t> &incomingsizetobjects, std::vector<CustomerOrder> &incomingCustomerOrders, int index, std::ostream& os)
 	{
 		myStation = incomingStationAddr;
-		//myCustomerOrder = std::move(incomingCustomerOrders);
+		
 		for (int index = incomingCustomerOrders.size()-1; index >= 0; index--)
 		{
 			myCustomerOrder.push_back(std::move(incomingCustomerOrders[index]));
 		}
+		
 		startingVal = index;
 		myOutputStream = &os;
 
@@ -21,8 +22,6 @@ namespace sict
 			}
 			
 			myIndexes.pop_front();
-
-			// myIndexes = {4, 0, 2, 1, 3, 5};
 		}
 	}
 
@@ -34,7 +33,7 @@ namespace sict
 			completeOrders.at(index).display(os,true);
 		}
 		os << "INCOMPLETE ORDERS\n";
-		for (size_t index = 0; index < completeOrders.size(); index++)
+		for (size_t index = 0; index < incompleteOrders.size(); index++)
 		{			
 			incompleteOrders.at(index).display(os,true);
 		}
@@ -58,20 +57,28 @@ namespace sict
 					CustomerOrder newOrder;
 					myStation.at(index)->pop(newOrder); // move that order into new object
 
-					if ((myIndexes.at(index) == myIndexes.back()))   // if last station
+					if (myStation.at(index)->getName() == myStation.at(myIndexes.at(index-1))->getName())   // if last station
 					{
 						if (newOrder.isFilled()) // if filled
 						{
-							os << " --> ";
-							newOrder.display(os, false);
-							os << "moved from" << myStation.at(myIndexes.at(index))->getName() << " to Completed Set" << std::endl;
+							os << " --> " 
+							<< newOrder.getNameProduct() 
+							<< " moved from " 
+							<< myStation.at(index)->getName() 
+							<< " to " 
+							<< "Completed Set"
+							<< std::endl;
 							completeOrders.push_back(std::move(newOrder)); // move to completed orders queue
 						}
 						else // if not filled
 						{
-							os << " --> ";
-							newOrder.display(os, false);
-							os << "moved from" << myStation.at(myIndexes.at(index))->getName() << " to Incomplete Set" << std::endl;
+							os << " --> " 
+							<< newOrder.getNameProduct() 
+							<< " moved from " 
+							<< myStation.at(index)->getName() 
+							<< " to " 
+							<< "Incomplete Set"
+							<< std::endl;
 							incompleteOrders.push_back(std::move(newOrder)); // move to incompleted orders queue
 						}
 					}
@@ -82,7 +89,7 @@ namespace sict
 							<< " moved from " 
 							<< myStation.at(index)->getName() 
 							<< " to " 
-							<< myStation.at(myIndexes.at(index))->getName() 
+							<< myStation.at(index+1)->getName() 
 							<< std::endl;
 							
 						myStation.at(myIndexes.at(index))->operator+=(std::move(newOrder));						
