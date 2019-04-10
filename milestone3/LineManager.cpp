@@ -58,10 +58,8 @@ namespace sict
 					CustomerOrder newOrder;
 					myStation.at(index)->pop(newOrder); // move that order into new object
 
-					if (myIndexes.at(index) == myIndexes.back())   // if last station
+					if ((myIndexes.at(index) == myIndexes.back()))   // if last station
 					{
-					//	os << "at = " << myIndexes.at(index) << ", index = " << myIndexes.back() << std::endl;
-
 						if (newOrder.isFilled()) // if filled
 						{
 							os << " --> ";
