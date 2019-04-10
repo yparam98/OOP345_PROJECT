@@ -6,6 +6,8 @@ namespace sict
 	{
 		myStation = incomingStationAddr;
 		
+		sizeOfOrders = incomingCustomerOrders.size();
+
 		for (int index = incomingCustomerOrders.size()-1; index >= 0; index--)
 		{
 			myCustomerOrder.push_back(std::move(incomingCustomerOrders[index]));
@@ -21,7 +23,8 @@ namespace sict
 				myIndexes.push_back(incomingsizetobjects.at(myIndexes[index]));
 			}
 			
-			myIndexes.pop_front();
+			//lastStation == myIndexes.back();
+			myIndexes.pop_back();
 		}
 	}
 
@@ -41,65 +44,70 @@ namespace sict
 
 	bool LineManager::run(std::ostream &os)
 	{
-		if (!myCustomerOrder.back().isFilled()) // if last order is not filled
+		if (!myCustomerOrder.back().isFilled()) 
 		{
-			myStation.at(startingVal)->operator+=(std::move(myCustomerOrder.back())); // move to starting station
+			myStation.at(startingVal)->operator+=(std::move(myCustomerOrder.back())); 
 
-			for (auto stationIterator = myStation.begin(); stationIterator != myStation.end(); stationIterator++) // for each station
+			for (auto stationIterator = myStation.begin(); stationIterator != myStation.end(); stationIterator++) 
 			{
-				(*stationIterator)->fill(os); // execute the fill step								
+				(*stationIterator)->fill(os); 
 			}
+
+			myCustomerOrder.pop_back();		
 			
-			for (size_t index = 0; index < myIndexes.size(); index++) // calls hasAnOrderToRelease on every station
+			size_t temp{0};
+			for (auto myIndexesIterator = myIndexes.begin(); myIndexesIterator != myIndexes.end(); myIndexesIterator++) 
+			//for (size_t index = 0; index < myIndexes.size(); index++)
 			{
-				if (myStation.at(index)->hasAnOrderToRelease()) // if any station has an order to be released
+				temp++;
+
+				if (myStation.at(*myIndexesIterator)->hasAnOrderToRelease()) 
 				{
 					CustomerOrder newOrder;
-					myStation.at(index)->pop(newOrder); // move that order into new object
-
-					if (myStation.at(index)->getName() == myStation.at(myIndexes.at(index-1))->getName())   // if last station
+					myStation.at(*myIndexesIterator)->pop(newOrder); 
+					// std::cout << myStation.at(index)->getName() << std::endl;
+					if (*myIndexesIterator == myIndexes.back())   
 					{
-						if (newOrder.isFilled()) // if filled
+						if (newOrder.isFilled()) 
 						{
-							os << " --> " 
+							*myOutputStream << " --> " 
 							<< newOrder.getNameProduct() 
 							<< " moved from " 
-							<< myStation.at(index)->getName() 
+							<< myStation.at(*myIndexesIterator)->getName() 
 							<< " to " 
 							<< "Completed Set"
 							<< std::endl;
-							completeOrders.push_back(std::move(newOrder)); // move to completed orders queue
+							completeOrders.push_back(std::move(newOrder)); 
 						}
-						else // if not filled
+						else 
 						{
-							os << " --> " 
+							*myOutputStream << " --> " 
 							<< newOrder.getNameProduct() 
 							<< " moved from " 
-							<< myStation.at(index)->getName() 
+							<< myStation.at(*myIndexesIterator)->getName() 
 							<< " to " 
 							<< "Incomplete Set"
 							<< std::endl;
-							incompleteOrders.push_back(std::move(newOrder)); // move to incompleted orders queue
+							incompleteOrders.push_back(std::move(newOrder)); 
 						}
 					}
-					else // if not last station
+					else 
 					{
-						os << " --> " 
+						*myOutputStream << " --> " 
 							<< newOrder.getNameProduct() 
 							<< " moved from " 
-							<< myStation.at(index)->getName() 
+							<< myStation.at(*myIndexesIterator)->getName() 
 							<< " to " 
-							<< myStation.at(index+1)->getName() 
+							<< myStation.at(myIndexes.at(temp))->getName() 
 							<< std::endl;
-							
-						myStation.at(myIndexes.at(index))->operator+=(std::move(newOrder));						
+							 
+						myStation.at(myIndexes.at(temp))->operator+=(std::move(newOrder));						
 					}
 				}
 			}
 
-			processedOrdersCount++;
-			myCustomerOrder.pop_back();		
+			processedOrdersCount++;			
 		}
-		return processedOrdersCount == myCustomerOrder.size() ? true : false;
+		return processedOrdersCount == sizeOfOrders ? true : false;
 	}
 }

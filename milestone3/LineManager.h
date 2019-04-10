@@ -17,9 +17,9 @@ namespace sict
         std::deque<size_t> myIndexes;
         int startingVal{0};
         std::ostream* myOutputStream;
-        size_t lastStation{0};
-        std::vector<sict::CustomerOrder>::iterator customerOrderIterator;
-        std::vector<sict::Station*>::iterator stationIterator;
+        size_t sizeOfOrders{0};
+        //size_t lastStation{0};        
+        
         //std::vector<size_t>::iterator indexIterator;
         size_t processedOrdersCount{0};
     public:

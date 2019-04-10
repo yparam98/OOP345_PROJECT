@@ -5,6 +5,7 @@ namespace sict
 	Station::Station(std::string &incomingString)
 	{
 		this->myItemSet = new ItemSet(incomingString);
+
 	}
 
 	void Station::display(std::ostream &os) const
@@ -34,7 +35,11 @@ namespace sict
 		{
 			return false;
 		}
-		else if (myCustomerOrder.front()->isItemFilled(myItemSet->getName()) || myItemSet->getQuantity() == 0)
+		else if (myCustomerOrder.front()->isItemFilled(myItemSet->getName()))
+		{
+			return true;
+		}
+		else if (myItemSet->getQuantity() == 0)
 		{
 			return true;
 		}
