@@ -50,61 +50,76 @@ namespace sict
 
 			for (auto stationIterator = myStation.begin(); stationIterator != myStation.end(); stationIterator++) 
 			{
-				(*stationIterator)->fill(os); 
+				(*stationIterator)->fill(os);
+				
+				size_t temp{0};
+				for (auto myIndexesIterator = myIndexes.begin(); myIndexesIterator != myIndexes.end(); myIndexesIterator++)
+				//for (size_t index = 0; index < myIndexes.size(); index++)
+				{
+					temp++;
+
+					if (myStation.at(*myIndexesIterator)->hasAnOrderToRelease())
+					{
+						CustomerOrder newOrder;
+						myStation.at(*myIndexesIterator)->pop(newOrder);
+						// std::cout << myStation.at(index)->getName() << std::endl;
+						if (*myIndexesIterator == myIndexes.back())
+						{
+							if (newOrder.isFilled())
+							{
+								*myOutputStream << " --> " << newOrder.getNameProduct() << " moved from " << myStation.at(*myIndexesIterator)->getName() << " to "
+												<< "Completed Set" << std::endl;
+								completeOrders.push_back(std::move(newOrder));
+							}
+							else
+							{
+								*myOutputStream << " --> " << newOrder.getNameProduct() << " moved from " << myStation.at(*myIndexesIterator)->getName() << " to "
+												<< "Incomplete Set" << std::endl;
+								incompleteOrders.push_back(std::move(newOrder));
+							}
+						}
+						else
+						{
+							*myOutputStream << " --> " << newOrder.getNameProduct() << " moved from " << myStation.at(*myIndexesIterator)->getName() << " to " << myStation.at(myIndexes.at(temp))->getName() << std::endl;
+							myStation.at(myIndexes.at(temp))->operator+=(std::move(newOrder));
+						}
+					}
+				}
 			}
 
 			myCustomerOrder.pop_back();		
 			
-			size_t temp{0};
-			for (auto myIndexesIterator = myIndexes.begin(); myIndexesIterator != myIndexes.end(); myIndexesIterator++) 
-			//for (size_t index = 0; index < myIndexes.size(); index++)
-			{
-				temp++;
+			// size_t temp{0};
+			// for (auto myIndexesIterator = myIndexes.begin(); myIndexesIterator != myIndexes.end(); myIndexesIterator++) 
+			// //for (size_t index = 0; index < myIndexes.size(); index++)
+			// {
+			// 	temp++;
 
-				if (myStation.at(*myIndexesIterator)->hasAnOrderToRelease()) 
-				{
-					CustomerOrder newOrder;
-					myStation.at(*myIndexesIterator)->pop(newOrder); 
-					// std::cout << myStation.at(index)->getName() << std::endl;
-					if (*myIndexesIterator == myIndexes.back())   
-					{
-						if (newOrder.isFilled()) 
-						{
-							*myOutputStream << " --> " 
-							<< newOrder.getNameProduct() 
-							<< " moved from " 
-							<< myStation.at(*myIndexesIterator)->getName() 
-							<< " to " 
-							<< "Completed Set"
-							<< std::endl;
-							completeOrders.push_back(std::move(newOrder)); 
-						}
-						else 
-						{
-							*myOutputStream << " --> " 
-							<< newOrder.getNameProduct() 
-							<< " moved from " 
-							<< myStation.at(*myIndexesIterator)->getName() 
-							<< " to " 
-							<< "Incomplete Set"
-							<< std::endl;
-							incompleteOrders.push_back(std::move(newOrder)); 
-						}
-					}
-					else 
-					{
-						*myOutputStream << " --> " 
-							<< newOrder.getNameProduct() 
-							<< " moved from " 
-							<< myStation.at(*myIndexesIterator)->getName() 
-							<< " to " 
-							<< myStation.at(myIndexes.at(temp))->getName() 
-							<< std::endl;
-							 
-						myStation.at(myIndexes.at(temp))->operator+=(std::move(newOrder));						
-					}
-				}
-			}
+			// 	if (myStation.at(*myIndexesIterator)->hasAnOrderToRelease()) 
+			// 	{
+			// 		CustomerOrder newOrder;
+			// 		myStation.at(*myIndexesIterator)->pop(newOrder); 
+			// 		// std::cout << myStation.at(index)->getName() << std::endl;
+			// 		if (*myIndexesIterator == myIndexes.back())   
+			// 		{
+			// 			if (newOrder.isFilled()) 
+			// 			{
+			// 				*myOutputStream << " --> " << newOrder.getNameProduct() << " moved from " << myStation.at(*myIndexesIterator)->getName() << " to " << "Completed Set" << std::endl;
+			// 				completeOrders.push_back(std::move(newOrder)); 
+			// 			}
+			// 			else 
+			// 			{
+			// 				*myOutputStream << " --> " << newOrder.getNameProduct() << " moved from " << myStation.at(*myIndexesIterator)->getName() << " to " << "Incomplete Set" << std::endl;
+			// 				incompleteOrders.push_back(std::move(newOrder)); 
+			// 			}
+			// 		}
+			// 		else 
+			// 		{
+			// 			*myOutputStream << " --> " << newOrder.getNameProduct() << " moved from " << myStation.at(*myIndexesIterator)->getName() << " to " << myStation.at(myIndexes.at(temp))->getName() << std::endl;							 
+			// 			myStation.at(myIndexes.at(temp))->operator+=(std::move(newOrder));							
+			// 		}
+			// 	}
+			// }
 
 			processedOrdersCount++;			
 		}
