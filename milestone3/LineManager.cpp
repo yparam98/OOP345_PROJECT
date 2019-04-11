@@ -52,7 +52,7 @@ namespace sict
 			{
 				(*stationIterator)->fill(os);			
 			}
-
+			myCustomerOrder.pop_back();		
 			size_t temp{0};
 			for (auto myIndexesIterator = myIndexes.begin(); myIndexesIterator != myIndexes.end(); myIndexesIterator++)
 			{
@@ -67,14 +67,12 @@ namespace sict
 					{
 						if (newOrder.isFilled())
 						{
-							*myOutputStream << " --> " << newOrder.getNameProduct() << " moved from " << myStation.at(*myIndexesIterator)->getName() << " to "
-								<< "Completed Set" << std::endl;
+							*myOutputStream << " --> " << newOrder.getNameProduct() << " moved from " << myStation.at(*myIndexesIterator)->getName() << " to " << "Completed Set" << std::endl;
 							completeOrders.push_back(std::move(newOrder));
 						}
 						else
 						{
-							*myOutputStream << " --> " << newOrder.getNameProduct() << " moved from " << myStation.at(*myIndexesIterator)->getName() << " to "
-								<< "Incomplete Set" << std::endl;
+							*myOutputStream << " --> " << newOrder.getNameProduct() << " moved from " << myStation.at(*myIndexesIterator)->getName() << " to " << "Incomplete Set" << std::endl;
 							incompleteOrders.push_back(std::move(newOrder));
 						}
 					}
@@ -85,41 +83,6 @@ namespace sict
 					}
 				}
 			}
-
-			myCustomerOrder.pop_back();		
-
-			
-			
-			
-			
-			
-
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-
 			processedOrdersCount++;			
 		}
 		return processedOrdersCount == sizeOfOrders ? true : false;
