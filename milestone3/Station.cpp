@@ -5,7 +5,6 @@ namespace sict
 	Station::Station(std::string &incomingString)
 	{
 		this->myItemSet = new ItemSet(incomingString);
-
 	}
 
 	void Station::display(std::ostream &os) const
