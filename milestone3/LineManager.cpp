@@ -44,7 +44,7 @@ namespace sict
 
 	bool LineManager::run(std::ostream &os)
 	{
-		sict::CustomerOrder* newOrder = new CustomerOrder(); // creating new CustomerOrder object 
+		CustomerOrder newOrder; // creating new CustomerOrder object 
   
 		if (!myCustomerOrder.back().isFilled()) // if the customer order on back of queue not filled 
 		{
@@ -66,47 +66,47 @@ namespace sict
 				{
 					if (*myIndexesIterator == myIndexes.back()) // if current station is not the last station
 					{
-						if (myStation.at(*myIndexesIterator)->pop(*newOrder)) // moves the first order in station's customer order queue to newOrder, and returns true if the station filled its part of the order
+						if (myStation.at(*myIndexesIterator)->pop(newOrder)) // moves the first order in station's customer order queue to newOrder, and returns true if the station filled its part of the order
 						{
 							*myOutputStream << " --> " 
-								<< newOrder->getNameProduct() 
+								<< newOrder.getNameProduct() 
 								<< " moved from " 
 								<< myStation.at(*myIndexesIterator)->getName() 
 								<< " to " 
 								<< "Completed Set" 
 								<< std::endl;
 
-							completeOrders.push_back(std::move(*newOrder)); // move order to completed queue
-							delete newOrder; // deallocate memory for newOrder
+							completeOrders.push_back(std::move(newOrder)); // move order to completed queue
+							// delete &newOrder; // deallocate memory for newOrder
 						}
 						else
 						{
 							*myOutputStream << " --> " 
-								<< newOrder->getNameProduct() 
+								<< newOrder.getNameProduct() 
 								<< " moved from " 
 								<< myStation.at(*myIndexesIterator)->getName() 
 								<< " to " 
 								<< "Incomplete Set" 
 								<< std::endl;
 
-							incompleteOrders.push_back(std::move(*newOrder)); // if order is not filled, move to incomplete queue
-							delete newOrder; // deallocate memory for newOrder
+							incompleteOrders.push_back(std::move(newOrder)); // if order is not filled, move to incomplete queue
+							// delete &newOrder; // deallocate memory for newOrder
 						}
 					}
 					else
 					{
-						if (myStation.at(*myIndexesIterator)->pop(*newOrder)) // if current station is not the last station
+						if (myStation.at(*myIndexesIterator)->pop(newOrder)) // if current station is not the last station
 						{
 							*myOutputStream << " --> " 
-								<< newOrder->getNameProduct() 
+								<< newOrder.getNameProduct() 
 								<< " moved from " 
 								<< myStation.at(*myIndexesIterator)->getName() 
 								<< " to " 
 								<< myStation.at(myIndexes.at(temp))->getName() 
 								<< std::endl;
 								
-							myStation.at(myIndexes.at(temp))->operator+=(std::move(*newOrder)); // move the order to the next station
-							delete newOrder; // deallocates memory for newOrder
+							myStation.at(myIndexes.at(temp))->operator+=(std::move(newOrder)); // ERROR -> OBJECT NOT PROPERLY MOVING, THE OBJECT PUSHED INTO STATION IS JUST A POINTER TO THIS OBJECT!! // move the order to the next station
+							// delete &newOrder; // deallocates memory for newOrder
 						}
 					}
 				} 
