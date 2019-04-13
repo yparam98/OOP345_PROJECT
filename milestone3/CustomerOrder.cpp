@@ -12,10 +12,10 @@ namespace sict
     //default constructor, initializes object to empty state
     CustomerOrder::CustomerOrder()
     {
-        customerName.clear();
-        assembledProduct.clear();
-        ItemInfo->itemName.clear();  
-        subCounter = 0;      
+        // customerName = "africa";
+        // assembledProduct.clear();
+        // ItemInfo->itemName.clear();  
+        // subCounter = 0;      
     }
 
     //one argument constructor, initializes objects based on incoming string

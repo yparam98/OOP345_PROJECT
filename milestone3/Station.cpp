@@ -56,7 +56,7 @@ namespace sict
 
 	Station& Station::operator+=(CustomerOrder &&order)
 	{
-		myCustomerOrder.push_back(&order);
+		myCustomerOrder.push_back(std::move(&order));		
 		return *this;
 	}
 
@@ -68,7 +68,7 @@ namespace sict
 			
 			myCustomerOrder.pop_front();
 		
-			return ready.isFilled() ? true : false;
+			return ready.isItemFilled(this->getName()) ? true : false;
 		}
 		else
 		{
