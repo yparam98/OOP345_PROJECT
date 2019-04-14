@@ -92,7 +92,7 @@ namespace sict
     //fill item member function, fills specified item is unfilled
     void CustomerOrder::fillItem(ItemSet& item, std::ostream& os)
     {
-        for (int index = 0; index <= subCounter; index++)
+        for (int index = 0; index < subCounter; index++)
         {
             if (ItemInfo[index].itemName == item.getName())
             {

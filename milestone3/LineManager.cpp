@@ -54,7 +54,7 @@ namespace sict
 			{
 				(*stationIterator)->fill(os); // fill station positioned at every incrementing iteration
 			}
-
+		
 			myCustomerOrder.pop_back(); // remove the station at back of the queue
 			size_t temp{0}; // creating size_t variable called temp, initialized to 0
 
