@@ -12,10 +12,10 @@ namespace sict
     //default constructor, initializes object to empty state
     CustomerOrder::CustomerOrder()
     {
-        // customerName = "africa";
-        // assembledProduct.clear();
-        // ItemInfo->itemName.clear();  
-        // subCounter = 0;      
+        customerName.clear();
+        assembledProduct.clear();
+        ItemInfo->itemName.clear();  
+        subCounter = 0;      
     }
 
     //one argument constructor, initializes objects based on incoming string
@@ -69,7 +69,7 @@ namespace sict
             this->customerName = incomingObj.customerName;
             this->assembledProduct = incomingObj.assembledProduct;
             this->subCounter = incomingObj.subCounter;
-            for (int index = 0; index < incomingObj.subCounter; index++)
+            for (int index = 0; index <  incomingObj.subCounter; index++)
             {
                 this->ItemInfo[index].itemName = incomingObj.ItemInfo[index].itemName;
                 this->ItemInfo[index].serialNumber = incomingObj.ItemInfo[index].serialNumber;
@@ -79,7 +79,7 @@ namespace sict
             incomingObj.customerName.clear();
             incomingObj.assembledProduct.clear();
             incomingObj.subCounter = 0;
-            for (int index = 0; index < incomingObj.subCounter; index++)
+            for (int index = 0; index <  this->subCounter; index++)
             {
                 incomingObj.ItemInfo[index].itemName.clear();
                 incomingObj.ItemInfo[index].serialNumber = 0;
@@ -92,7 +92,7 @@ namespace sict
     //fill item member function, fills specified item is unfilled
     void CustomerOrder::fillItem(ItemSet& item, std::ostream& os)
     {
-        for (int index = 0; index < subCounter; index++)
+        for (int index = 0; index <  subCounter; index++)
         {
             if (ItemInfo[index].itemName == item.getName())
             {
@@ -102,8 +102,8 @@ namespace sict
 
                     os << " Filled " << this->customerName
                        << " [" << this->assembledProduct << "]"
-                       << "[" << ItemInfo[index].itemName << "]"
-                       << "[" << ItemInfo[index].serialNumber << "]"
+                       << "[" << item.getName() << "]"
+                       << "[" << item.getSerialNumber() << "]"
                        << std::endl;
                     
                     ItemInfo[index].filled = true;
@@ -116,8 +116,8 @@ namespace sict
                 {
                     os << " Unable to fill " << this->customerName
                        << " [" << this->assembledProduct << "]"
-                       << "[" << ItemInfo[index].itemName << "]"
-                       << "[" << ItemInfo[index].serialNumber << "]"
+                       << "[" << item.getName() << "]"
+                       << "[" << item.getSerialNumber() << "]"
                        << " already filled" << std::endl;
         
                        break;
@@ -126,8 +126,8 @@ namespace sict
                 {
                     os << " Unable to fill " << this->customerName
                        << " [" << this->assembledProduct << "]"
-                       << "[" << ItemInfo[index].itemName << "]"
-                       << "[" << ItemInfo[index].serialNumber << "]"
+                       << "[" << item.getName() << "]"
+                       << "[" << item.getSerialNumber() << "]"
                        << " out of stock" << std::endl;
 
                        break;
@@ -146,9 +146,9 @@ namespace sict
     bool CustomerOrder::isFilled() const
     {
         int filledCounter{0};
-        for (int index = 0; index <= subCounter; index++)
+        for (int index = 0; index <  subCounter; index++)
         {
-            if (ItemInfo[index].filled)
+            if (this->ItemInfo[index].filled)
             {
                 filledCounter++;
             }
@@ -163,7 +163,7 @@ namespace sict
     //query, checks if specific item is filled or not
     bool CustomerOrder::isItemFilled(const std::string& item) const
     {
-        for (int index = 0; index <= subCounter; index++)
+        for (int index = 0; index <  subCounter; index++)
         {
             if (ItemInfo[index].itemName == item)
             {
@@ -192,7 +192,7 @@ namespace sict
         if (showDetail)
         {
             os << this->customerName << " [" << this->assembledProduct << "]" << std::endl;
-            for (int index = 0; index <= subCounter; index++)
+            for (int index = 0; index <  subCounter; index++)
             {
                 std::string temp;
 
@@ -212,7 +212,7 @@ namespace sict
         else
         {
             os << std::left << std::setw(this->helperObject.getFieldWidth()+2) << this->customerName << " [" << this->assembledProduct << "]" << std::endl;
-            for (int index = 0; index <= subCounter; index++)
+            for (int index = 0; index <  subCounter; index++)
             {
                 os << std::right << std::setw(this->helperObject.getFieldWidth()+3) << "" << ItemInfo[index].itemName << std::endl;
             }

@@ -17,7 +17,7 @@
 
 namespace sict
 {
-    const unsigned int maxNumOfItems = 10;
+    const unsigned int maxNumOfItems = 7;
 
     class CustomerOrder
     {

@@ -56,7 +56,9 @@ namespace sict
 
 	Station& Station::operator+=(CustomerOrder &&order)
 	{
-		myCustomerOrder.push_back(&order);				
+		CustomerOrder newOrder;
+		newOrder.operator=(std::move(order));
+		myCustomerOrder.push_back(&newOrder);				
 		return *this;
 	}
 

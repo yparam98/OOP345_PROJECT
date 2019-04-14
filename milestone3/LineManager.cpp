@@ -8,10 +8,7 @@ namespace sict
 
 		sizeOfOrders = incomingCustomerOrders.size();
 
-		for (int index = incomingCustomerOrders.size()-1; index >= 0; index--)
-		{
-			myCustomerOrder.push_back(std::move(incomingCustomerOrders[index]));
-		}
+		myCustomerOrder = std::move(incomingCustomerOrders);
 
 		startingVal = index;
 		myOutputStream = &os;
@@ -23,7 +20,7 @@ namespace sict
 				myIndexes.push_back(incomingsizetobjects.at(myIndexes[index]));
 			}
 
-			
+
 			myIndexes.pop_back();
 		}
 	}
@@ -45,7 +42,7 @@ namespace sict
 	bool LineManager::run(std::ostream &os)
 	{
 		CustomerOrder newOrder; // creating new CustomerOrder object 
-  
+
 		if (!myCustomerOrder.back().isFilled()) // if the customer order on back of queue not filled 
 		{
 			myStation.at(startingVal)->operator+=(std::move(myCustomerOrder.back())); // move the customer order at back of queue to the station at starting position
@@ -54,7 +51,7 @@ namespace sict
 			{
 				(*stationIterator)->fill(os); // fill station positioned at every incrementing iteration
 			}
-		
+
 			myCustomerOrder.pop_back(); // remove the station at back of the queue
 			size_t temp{0}; // creating size_t variable called temp, initialized to 0
 
@@ -104,7 +101,7 @@ namespace sict
 								<< " to " 
 								<< myStation.at(myIndexes.at(temp))->getName() 
 								<< std::endl;
-								
+
 							myStation.at(myIndexes.at(temp))->operator+=(std::move(newOrder)); // ERROR -> OBJECT NOT PROPERLY MOVING, THE OBJECT PUSHED INTO STATION IS JUST A POINTER TO THIS OBJECT!! // move the order to the next station
 							// delete &newOrder; // deallocates memory for newOrder
 						}
