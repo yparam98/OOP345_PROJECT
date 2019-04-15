@@ -16,9 +16,9 @@ namespace sict
 	{
 		if (myCustomerOrder.size() >  0) 
 		{
-			if (!myCustomerOrder.back()->isFilled()) 
+			if (!myCustomerOrder.back().isFilled()) 
 			{
-				myCustomerOrder.back()->fillItem(*myItemSet, os); 
+				myCustomerOrder.back().fillItem(*myItemSet, os); 
 			} 
 		}
 	}
@@ -34,7 +34,7 @@ namespace sict
 		{
 			return false;
 		}
-		else if (myCustomerOrder.front()->isItemFilled(myItemSet->getName()))
+		else if (myCustomerOrder.front().isItemFilled(myItemSet->getName()))
 		{
 			return true;
 		}
@@ -56,9 +56,10 @@ namespace sict
 
 	Station& Station::operator+=(CustomerOrder &&order)
 	{
-		CustomerOrder newOrder;
-		newOrder.operator=(std::move(order));
-		myCustomerOrder.push_back(&newOrder);				
+		CustomerOrder* newOrder = new CustomerOrder();
+		newOrder->operator=(std::move(order));
+		myCustomerOrder.push_back(std::move(*newOrder));	
+		delete newOrder;			
 		return *this;
 	}
 
@@ -66,7 +67,7 @@ namespace sict
 	{
 		if(!myCustomerOrder.empty())
 		{
-			ready.operator=(std::move(*myCustomerOrder.front()));	
+			ready.operator=(std::move(myCustomerOrder.front()));	
 			
 			myCustomerOrder.pop_front();
 		
