@@ -61,8 +61,6 @@ namespace sict
 
 			myCustomerOrder.pop_back(); // remove the station at back of the queue
 		
-		//size_t temp{0}; // creating size_t variable called temp, initialized to 0
-
 		for (size_t myIndexesIterator = 0; myIndexesIterator < myStation.size(); myIndexesIterator++) // cycle through every every element in myIndexes container
 		{
 			//temp++; // increment temp variable by one for every iteration
