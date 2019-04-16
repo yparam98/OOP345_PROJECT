@@ -96,13 +96,15 @@ namespace sict
         {
             if (ItemInfo[index].itemName == item.getName())
             {
-                if (ItemInfo[index].filled == true)
+                if (this->isItemFilled(item.getName()))
                 {
                     os << " Unable to fill " << this->customerName
                        << " [" << this->assembledProduct << "]"
                        << "[" << item.getName() << "]"
                        << "[" << item.getSerialNumber() << "]"
                        << " already filled" << std::endl;
+
+                       throw(1);
         
                        break;
                 }
@@ -111,21 +113,22 @@ namespace sict
                     os << " Unable to fill " << this->customerName
                        << " [" << this->assembledProduct << "]"
                        << "[" << item.getName() << "]"
-                       << "[" << item.getSerialNumber() << "]"
+                       << "[" << ItemInfo[index].serialNumber << "]"
                        << " out of stock" << std::endl;
 
+                        throw(2);
                        break;
                 }
-                if (ItemInfo[index].filled != true && item.getQuantity() >= 1)
+                if (this->isItemFilled(item.getName()) != true && item.getQuantity() >= 1)
                 {
-                    ItemInfo[index].serialNumber = item.getSerialNumber();
+                    //ItemInfo[index].serialNumber = item.getSerialNumber();
 
                     os << " Filled " << this->customerName
                        << " [" << this->assembledProduct << "]"
                        << "[" << item.getName() << "]"
                        << "[" << item.getSerialNumber() << "]"
-                       << std::endl;
-                    
+                       << std::endl;        
+
                     ItemInfo[index].filled = true;
 
                     item.operator--();
@@ -163,21 +166,30 @@ namespace sict
     //query, checks if specific item is filled or not
     bool CustomerOrder::isItemFilled(const std::string& item) const
     {
-        for (int index = 0; index <  subCounter; index++)
+        std::string nameOfItem = item;
+        size_t numOfRequiredItems{0};
+        size_t fillCount{0};
+        for (int index = 0; index < subCounter; index++)
         {
-            if (ItemInfo[index].itemName == item)
+            if (ItemInfo[index].itemName == nameOfItem)
             {
-                if (ItemInfo[index].filled == true)
+                numOfRequiredItems++;
+                if (ItemInfo[index].filled)
                 {
-                    return true;
-                }
-                else
-                {
-                    return false;
+                    fillCount++;
                 }
             }
         }
-        return false;
+        if (numOfRequiredItems == fillCount)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
+
     }
 
     //returns name and product

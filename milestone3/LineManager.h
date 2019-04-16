@@ -14,10 +14,11 @@ namespace sict
         std::vector<CustomerOrder> myCustomerOrder;
         std::deque<CustomerOrder> incompleteOrders;
         std::deque<CustomerOrder> completeOrders;
-        std::deque<size_t> myIndexes;
+        std::vector<size_t> myIndexes;
         int startingVal{0};
         std::ostream* myOutputStream;
         size_t sizeOfOrders{0};
+        size_t lastStation{0};
         //size_t lastStation{0};        
         
         //std::vector<size_t>::iterator indexIterator;

@@ -18,8 +18,19 @@ namespace sict
 		{
 			if (!myCustomerOrder.back().isFilled()) 
 			{
-				myCustomerOrder.back().fillItem(*myItemSet, os); 
+				while (!myCustomerOrder.back().isItemFilled(myItemSet->getName()))
+				{
+					try
+					{
+						myCustomerOrder.back().fillItem(*myItemSet, os);
+					}
+					catch(...) 
+					{
+						break;
+					}
+				}				
 			} 
+			
 		}
 	}
 
@@ -58,7 +69,9 @@ namespace sict
 	{
 		CustomerOrder* newOrder = new CustomerOrder();
 		newOrder->operator=(std::move(order));
+		if (myCustomerOrder.empty()) { myCustomerOrder.clear();}
 		myCustomerOrder.push_back(std::move(*newOrder));	
+		
 		delete newOrder;			
 		return *this;
 	}

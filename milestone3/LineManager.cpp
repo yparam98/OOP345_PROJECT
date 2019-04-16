@@ -25,8 +25,9 @@ namespace sict
 				myIndexes.push_back(incomingsizetobjects.at(myIndexes[index]));
 			}
 
+			lastStation =  myIndexes.back();
 
-			//myIndexes.pop_back();
+			myIndexes = incomingsizetobjects;
 		}
 	}
 
@@ -62,25 +63,25 @@ namespace sict
 		}
 		//size_t temp{0}; // creating size_t variable called temp, initialized to 0
 
-		for (size_t myIndexesIterator = 0; myIndexesIterator < myIndexes.size()-1; myIndexesIterator++) // cycle through every every element in myIndexes container
+		for (size_t myIndexesIterator = 0; myIndexesIterator < myStation.size(); myIndexesIterator++) // cycle through every every element in myIndexes container
 		{
 			//temp++; // increment temp variable by one for every iteration
 
-			if (myStation.at(myIndexes.at(myIndexesIterator))->hasAnOrderToRelease()) // if the station at position of current myIndex has an order to release
+			if (myStation.at(myIndexesIterator)->hasAnOrderToRelease()) // if the station at position of current myIndex has an order to release
 			{
-				if (myIndexes.at(myIndexesIterator+1) == myIndexes.back()) // if current station is not the last station
+				if (myIndexesIterator == 3) // if current station is not the last station
 				{
 					processedOrdersCount++;	// increments the count for processed order
-					if (myStation.at(myIndexes.at(myIndexesIterator))->pop(*newOrder)) // moves the first order in station's customer order queue to *newOrder, and returns true if the station filled its part of the order
+					if (myStation.at(myIndexesIterator)->pop(*newOrder)) // moves the first order in station's customer order queue to *newOrder, and returns true if the station filled its part of the order
 					{
-						*myOutputStream << " --> " << newOrder->getNameProduct() << " moved from " << myStation.at(myIndexes.at(myIndexesIterator))->getName() << " to " << "Completed Set" << std::endl;
+						*myOutputStream << " --> " << newOrder->getNameProduct() << " moved from " << myStation.at(myIndexesIterator)->getName() << " to " << "Completed Set" << std::endl;
 
 						completeOrders.push_back(std::move(*newOrder)); // move order to completed queue
 						// delete &*newOrder; // deallocate memory for *newOrder
 					}
 					else
 					{
-						*myOutputStream << " --> " << newOrder->getNameProduct() << " moved from " << myStation.at(myIndexes.at(myIndexesIterator))->getName() << " to " << "Incomplete Set" << std::endl;
+						*myOutputStream << " --> " << newOrder->getNameProduct() << " moved from " << myStation.at(myIndexesIterator)->getName() << " to " << "Incomplete Set" << std::endl;
 
 						incompleteOrders.push_back(std::move(*newOrder)); // if order is not filled, move to incomplete queue
 						// delete &*newOrder; // deallocate memory for *newOrder
@@ -88,14 +89,15 @@ namespace sict
 				}
 				else
 				{
-					while (myStation.at(myIndexes.at(myIndexesIterator))->pop(*newOrder)) // if current station is not the last station
-					{
-						*myOutputStream << " --> " << newOrder->getNameProduct() << " moved from " << myStation.at(myIndexes.at(myIndexesIterator))->getName() << " to " << myStation.at(myIndexes.at(myIndexesIterator+1))->getName() << std::endl;
+					
+					myStation.at(myIndexesIterator)->pop(*newOrder);
 
-						myStation.at(myIndexes.at(myIndexesIterator+1))->operator+=(std::move(*newOrder)); // ERROR -> OBJECT NOT PROPERLY MOVING, THE OBJECT PUSHED INTO STATION IS JUST A POINTER TO THIS OBJECT!! // move the order to the next station
-						// delete &*newOrder; // deallocates memory for *newOrder
-						delete newOrder;
-					}
+					*myOutputStream << " --> " << newOrder->getNameProduct() << " moved from " << myStation.at(myIndexesIterator)->getName() << " to " << myStation.at(myIndexes.at(myIndexesIterator))->getName() << std::endl;
+
+					myStation.at(myIndexes.at(myIndexesIterator))->operator+=(std::move(*newOrder)); // ERROR -> OBJECT NOT PROPERLY MOVING, THE OBJECT PUSHED INTO STATION IS JUST A POINTER TO THIS OBJECT!! // move the order to the next station
+					// delete &*newOrder; // deallocates memory for *newOrder
+					delete newOrder;
+					//	}
 				}
 			} 
 		}
