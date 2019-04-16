@@ -17,7 +17,7 @@ namespace sict
 		std::string myName;
 		std::string myDescription;
 		long mySerialNum{ 0 };
-		int myQuantity{ 0 };
+		int myQuantity{ 0 };		
 
 	public:
 		ItemSet();

@@ -24,7 +24,7 @@ namespace sict
 			this->myName = helper.extractToken(incomingStr, beginningOfStr);
 			this->mySerialNum = std::stol(helper.extractToken(incomingStr, beginningOfStr));
 			this->myQuantity = std::stoi(helper.extractToken(incomingStr, beginningOfStr));
-			this->myDescription = helper.extractToken(incomingStr, beginningOfStr);
+			this->myDescription = helper.extractToken(incomingStr, beginningOfStr);			
 		}
 		catch (const char* errMsg) 
 		{
@@ -77,19 +77,15 @@ namespace sict
 	}
 
 	//display query
-	void ItemSet::display(std::ostream & os, bool full) const
+	void ItemSet::display(std::ostream &os, bool full) const
 	{
 		if (full)
 		{
-			os << std::left << std::setw(helper.getFieldWidth()) << this->myName << " [" <<
-				std::setw(5) << this->mySerialNum << "] Quantity " <<
-				std::setw(3) << this->myQuantity << " Description: " <<
-				this->myDescription << std::endl;
+			os << std::left << std::setw(this->helper.getFieldWidth() / 2) << std::left << this->myName << " [" << std::setw(5) << this->mySerialNum << "] Quantity " << std::setw(3) << this->myQuantity << " Description: " << this->myDescription << std::endl;
 		}
 		else
 		{
-			os << std::left << std::setw(helper.getFieldWidth()) << this->myName << " [" <<
-				std::setw(5) << this->mySerialNum << "]" << std::endl;
+			os << std::left << std::setw(this->helper.getFieldWidth() / 2) << this->myName << " [" << std::setw(5) << this->mySerialNum << "]" << std::endl;
 		}
 	}
 }
