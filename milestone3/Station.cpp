@@ -3,9 +3,7 @@
 namespace sict
 {
 	Station::Station(std::string &incomingString) : myItemSet(incomingString)
-	{
-		// this->myItemSet = new ItemSet(incomingString);
-		
+	{		
 	}
 
 	void Station::display(std::ostream &os) const
@@ -20,8 +18,7 @@ namespace sict
 			if (!myCustomerOrder.back().isFilled()) 
 			{
 				myCustomerOrder.back().fillItem(myItemSet, os);
-			} 
-			
+			} 			
 		}
 	}
 
@@ -60,8 +57,7 @@ namespace sict
 	{
 		CustomerOrder* newOrder = new CustomerOrder();
 		newOrder->operator=(std::move(order));
-		if (myCustomerOrder.empty()) { myCustomerOrder.clear();}
-		myCustomerOrder.push_back(std::move(*newOrder));	
+		myCustomerOrder.push_back(std::move(*newOrder));			
 		
 		delete newOrder;			
 		return *this;
