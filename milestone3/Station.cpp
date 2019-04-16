@@ -2,14 +2,15 @@
 
 namespace sict
 {
-	Station::Station(std::string &incomingString)
+	Station::Station(std::string &incomingString) : myItemSet(incomingString)
 	{
-		this->myItemSet = new ItemSet(incomingString);
+		// this->myItemSet = new ItemSet(incomingString);
+		
 	}
 
 	void Station::display(std::ostream &os) const
 	{
-		myItemSet->display(os, true);
+		myItemSet.display(os, true);
 	}    
 
 	void Station::fill(std::ostream &os)
@@ -18,17 +19,19 @@ namespace sict
 		{
 			if (!myCustomerOrder.back().isFilled()) 
 			{
-				while (!myCustomerOrder.back().isItemFilled(myItemSet->getName()))
-				{
-					try
-					{
-						myCustomerOrder.back().fillItem(*myItemSet, os);
-					}
-					catch(...) 
-					{
-						break;
-					}
-				}				
+				myCustomerOrder.back().fillItem(myItemSet, os);
+				
+				// while (!myCustomerOrder.back().isItemFilled(myItemSet.getName()))
+				// {
+				// 	try
+				// 	{
+				// 		myCustomerOrder.back().fillItem(myItemSet, os);
+				// 	}
+				// 	catch(...) 
+				// 	{
+				// 		break;
+				// 	}
+				// }				
 			} 
 			
 		}
@@ -36,7 +39,7 @@ namespace sict
 
 	const std::string& Station::getName() const
 	{
-		return myItemSet->getName();
+		return myItemSet.getName();
 	}
 
 	bool Station::hasAnOrderToRelease() const
@@ -45,11 +48,11 @@ namespace sict
 		{
 			return false;
 		}
-		else if (myCustomerOrder.front().isItemFilled(myItemSet->getName()))
+		else if (myCustomerOrder.front().isItemFilled(myItemSet.getName()))
 		{
 			return true;
 		}
-		else if (myItemSet->getQuantity() == 0)
+		else if (myItemSet.getQuantity() == 0)
 		{
 			return true;
 		}
@@ -61,7 +64,7 @@ namespace sict
 
 	Station& Station::operator--()
 	{
-		myItemSet->operator--();
+		myItemSet.operator--();
 		return *this;
 	}
 
@@ -94,9 +97,9 @@ namespace sict
 
 	void Station::validate(std::ostream &os) const
 	{
-		os << " getItem(): " << myItemSet->getName() 
-			<< "\n getSerialNumber(): " << myItemSet->getSerialNumber()
-			<< "\n getQuantity(): " << myItemSet->getQuantity()
+		os << " getItem(): " << myItemSet.getName() 
+			<< "\n getSerialNumber(): " << myItemSet.getSerialNumber()
+			<< "\n getQuantity(): " << myItemSet.getQuantity()
 			<< std::endl;
 	}
 }

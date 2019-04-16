@@ -11,7 +11,7 @@ namespace sict
     class Station
     {
         std::deque<CustomerOrder> myCustomerOrder;
-        ItemSet* myItemSet;
+        ItemSet myItemSet;
     public:
         Station(std::string &incomingString);
         void display(std::ostream& os) const;
