@@ -56,8 +56,7 @@ namespace sict
 		}
 			for (auto stationIterator = myStation.begin(); stationIterator != myStation.end(); stationIterator++) // cycle through every station
 			{
-				(*stationIterator)->fill(os); // fill station positioned at every incrementing iteration
-				
+				(*stationIterator)->fill(os); // fill station positioned at every incrementing iteration				
 			}
 
 			myCustomerOrder.pop_back(); // remove the station at back of the queue

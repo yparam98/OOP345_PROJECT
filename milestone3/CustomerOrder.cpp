@@ -96,51 +96,55 @@ namespace sict
         {
             if (ItemInfo[index].itemName == item.getName())
             {
-                if (this->isItemFilled(item.getName()))
+                while (!this->isItemFilled(item.getName()))
                 {
-                    os << " Unable to fill " << this->customerName
-                       << " [" << this->assembledProduct << "]"
-                       << "[" << item.getName() << "]"
-                       << "[" << item.getSerialNumber() << "]"
-                       << " already filled" << std::endl;
+                    if (this->isItemFilled(item.getName()))
+                    {
+                        os << " Unable to fill " << this->customerName
+                           << " [" << this->assembledProduct << "]"
+                           << "[" << item.getName() << "]"
+                           << "[" << item.getSerialNumber() << "]"
+                           << " already filled" << std::endl;
 
-                       throw(1);
-        
-                       break;
+                        //throw(1);
+
+                        // break;
+                    }
+                    else if (item.getQuantity() == 0)
+                    {
+                        os << " Unable to fill " << this->customerName
+                           << " [" << this->assembledProduct << "]"
+                           << "[" << item.getName() << "]"
+                           << "[" << ItemInfo[index].serialNumber << "]"
+                           << " out of stock" << std::endl;
+
+                        //throw(2);
+                        break;
+                    }
+                    if (this->isItemFilled(item.getName()) != true && item.getQuantity() >= 1)
+                    {
+                        //ItemInfo[index].serialNumber = item.getSerialNumber();
+
+                        os << " Filled " << this->customerName
+                           << " [" << this->assembledProduct << "]"
+                           << "[" << item.getName() << "]"
+                           << "[" << item.getSerialNumber() << "]"
+                           << std::endl;
+
+                        ItemInfo[index].filled = true;
+
+                        item.operator--();
+
+                        //break;
+                    }
+                    else
+                    {
+                        os << "Your code is incorrect..." << std::endl;
+
+                        //break;
+                    }
                 }
-                else if (item.getQuantity() == 0)
-                {
-                    os << " Unable to fill " << this->customerName
-                       << " [" << this->assembledProduct << "]"
-                       << "[" << item.getName() << "]"
-                       << "[" << ItemInfo[index].serialNumber << "]"
-                       << " out of stock" << std::endl;
-
-                        throw(2);
-                       break;
-                }
-                if (this->isItemFilled(item.getName()) != true && item.getQuantity() >= 1)
-                {
-                    //ItemInfo[index].serialNumber = item.getSerialNumber();
-
-                    os << " Filled " << this->customerName
-                       << " [" << this->assembledProduct << "]"
-                       << "[" << item.getName() << "]"
-                       << "[" << item.getSerialNumber() << "]"
-                       << std::endl;        
-
-                    ItemInfo[index].filled = true;
-
-                    item.operator--();
-                    
-                    break;
-                }
-                else
-                {
-                    os << "Your code is incorrect..." << std::endl;
-
-                    break;
-                }
+                break;
             }
         }
     }

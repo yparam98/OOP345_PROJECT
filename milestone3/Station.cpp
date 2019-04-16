@@ -20,18 +20,6 @@ namespace sict
 			if (!myCustomerOrder.back().isFilled()) 
 			{
 				myCustomerOrder.back().fillItem(myItemSet, os);
-				
-				// while (!myCustomerOrder.back().isItemFilled(myItemSet.getName()))
-				// {
-				// 	try
-				// 	{
-				// 		myCustomerOrder.back().fillItem(myItemSet, os);
-				// 	}
-				// 	catch(...) 
-				// 	{
-				// 		break;
-				// 	}
-				// }				
 			} 
 			
 		}
