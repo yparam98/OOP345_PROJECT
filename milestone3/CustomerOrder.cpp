@@ -192,13 +192,13 @@ namespace sict
     {
         if (showDetail)
         {
-            os << this->customerName << " [" << this->assembledProduct << "]" << std::endl;
+            os << std::left << std::setw(this->helperObject.getFieldWidth()+1) << this->customerName << "[" << this->assembledProduct << "]" << std::endl;
             for (int index = 0; index <  subCounter; index++)
             {
                 std::string temp;
 
-                os << std::setw(this->helperObject.getFieldWidth()) 
-                << "[" << ItemInfo[index].serialNumber << "]" 
+                os << std::left << std::setw(this->helperObject.getFieldWidth()+1) << ""
+                << "[" << ItemInfo[index].serialNumber << "] " 
                 << ItemInfo[index].itemName
                 << " - ";
 

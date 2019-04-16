@@ -1,3 +1,8 @@
+//	program    : Station.h
+//	programmer : Yathavan, Parameshwaran
+//	date       : April 16, 2019
+//	professor  : Chris, Szalwinski
+
 #ifndef SICT_STATION_H
 #define SICT_STATION_H
 

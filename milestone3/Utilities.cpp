@@ -20,18 +20,18 @@ namespace sict
 		std::string tempStr;
 		size_t positionOfDelim = str.find(getDelimiter(),next_pos);
 
-		tempStr = str.substr(next_pos, (positionOfDelim-next_pos)); //  This function extracts the next token in the string starting at the position next_pos, and ending immediately before the delimiter character.
+		tempStr = str.substr(next_pos, (positionOfDelim-next_pos)); 
 
-		if (tempStr.length() > myFieldWidth) // // This function compares the size of the extracted token to the field width currently stored in the object and if the size of the token is greater than that width increases that width.
+		if (tempStr.length() > myFieldWidth) 
 		{
 			setFieldWidth(tempStr.length());
 		}
 		
-		if ((str.at(positionOfDelim + 1) != '\0') && (str.at(positionOfDelim + 1) != getDelimiter()) && (positionOfDelim != std::string::npos)) // This function returns in next_pos the position of the next token in the string if one exists.
+		if ((str.at(positionOfDelim + 1) != '\0') && (str.at(positionOfDelim + 1) != getDelimiter()) && (positionOfDelim != std::string::npos)) 
 		{
 			next_pos = positionOfDelim + 1;
 		}	
-		else if (str.at(positionOfDelim + 1) == getDelimiter())// If not, this function returns the position that is beyond the end of the string.
+		else if (str.at(positionOfDelim + 1) == getDelimiter())
 		{
 			throw("delims are too close to one another!");
 		}	
@@ -41,7 +41,6 @@ namespace sict
 		}
 
 		return tempStr;
-		
 	}
 
 	//returns local delimiter character

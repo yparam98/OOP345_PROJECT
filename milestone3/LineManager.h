@@ -1,3 +1,8 @@
+//	program    : LineManager.h
+//	programmer : Yathavan, Parameshwaran
+//	date       : April 16, 2019
+//	professor  : Chris, Szalwinski
+
 #ifndef SICT_LINE_MANAGER_H
 #define SICT_LINE_MANAGER_H
 
@@ -19,10 +24,8 @@ namespace sict
         std::ostream* myOutputStream;
         size_t sizeOfOrders{0};
         size_t lastStation{0};
-        //size_t lastStation{0};        
-        
-        //std::vector<size_t>::iterator indexIterator;
         size_t processedOrdersCount{0};
+        
     public:
         LineManager(std::vector<Station*> &incomingStationAddr, std::vector<size_t> &incomingsizetobjects, std::vector<CustomerOrder> &incomingCustomerOrders, int index, std::ostream& os);
         void display(std::ostream& os) const;

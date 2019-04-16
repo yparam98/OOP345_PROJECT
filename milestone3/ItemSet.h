@@ -39,10 +39,3 @@ namespace sict
 }
 
 #endif //SICT_ITEMSET_H
-
-
-
-
-
-
-//vector is a mathematical object that has a magnitude and a direction

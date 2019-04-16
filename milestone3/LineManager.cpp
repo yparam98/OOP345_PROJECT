@@ -1,14 +1,18 @@
+//	program    : LineManager.cpp
+//	programmer : Yathavan, Parameshwaran
+//	date       : April 16, 2019
+//	professor  : Chris, Szalwinski
+
 #include "LineManager.h"
 
 namespace sict
 {
+	// 5 argument constructor, initializes LineManager module with customer orders, list of stations, and an order of station sequence
 	LineManager::LineManager(std::vector<Station*> &incomingStationAddr, std::vector<size_t> &incomingsizetobjects, std::vector<CustomerOrder> &incomingCustomerOrders, int index, std::ostream& os)
 	{
 		myStation = incomingStationAddr;
 
 		sizeOfOrders = incomingCustomerOrders.size();
-
-		
 
 		for (int index = incomingCustomerOrders.size()-1; index >= 0; index--)
 		{
@@ -25,14 +29,13 @@ namespace sict
 				myIndexes.push_back(incomingsizetobjects.at(myIndexes[index]));
 			}
 
-
-
 			lastStation =  myIndexes.back();
 
 			myIndexes = incomingsizetobjects;
 		}
 	}
 
+	// display query, prints list of complete and incomplete orders to output
 	void LineManager::display(std::ostream& os) const
 	{
 		os << "COMPLETED ORDERS\n";
@@ -40,13 +43,14 @@ namespace sict
 		{			
 			completeOrders.at(index).display(os,true);
 		}
-		os << "INCOMPLETE ORDERS\n";
+		os << "\nINCOMPLETE ORDERS\n";
 		for (size_t index = 0; index < incompleteOrders.size(); index++)
 		{			
 			incompleteOrders.at(index).display(os,true);
 		}
 	}
 
+	// run function, fills orders, and categorizes orders into complete or incomplete queues
 	bool LineManager::run(std::ostream &os)
 	{
 		CustomerOrder newOrder;
