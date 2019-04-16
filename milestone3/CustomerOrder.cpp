@@ -92,11 +92,21 @@ namespace sict
     //fill item member function, fills specified item is unfilled
     void CustomerOrder::fillItem(ItemSet& item, std::ostream& os)
     {
+        size_t numOfRequiredItems{0};
+
+        for (int i = 0; i < subCounter; i++) 
+        {
+            if (ItemInfo[i].itemName == item.getName())
+            {
+                numOfRequiredItems++;
+            }
+        }
+
         for (int index = 0; index <  subCounter; index++)
         {
             if (ItemInfo[index].itemName == item.getName())
             {
-                while (!this->isItemFilled(item.getName()))
+                for (size_t j = 0; j < numOfRequiredItems; j++)
                 {
                     if (this->isItemFilled(item.getName()))
                     {
@@ -105,10 +115,6 @@ namespace sict
                            << "[" << item.getName() << "]"
                            << "[" << item.getSerialNumber() << "]"
                            << " already filled" << std::endl;
-
-                        //throw(1);
-
-                        // break;
                     }
                     else if (item.getQuantity() == 0)
                     {
@@ -117,14 +123,9 @@ namespace sict
                            << "[" << item.getName() << "]"
                            << "[" << ItemInfo[index].serialNumber << "]"
                            << " out of stock" << std::endl;
-
-                        //throw(2);
-                        break;
                     }
-                    if (this->isItemFilled(item.getName()) != true && item.getQuantity() >= 1)
+                    else if (this->isItemFilled(item.getName()) != true && item.getQuantity() >= 1)
                     {
-                        //ItemInfo[index].serialNumber = item.getSerialNumber();
-
                         os << " Filled " << this->customerName
                            << " [" << this->assembledProduct << "]"
                            << "[" << item.getName() << "]"
@@ -134,14 +135,12 @@ namespace sict
                         ItemInfo[index].filled = true;
 
                         item.operator--();
-
-                        //break;
                     }
                     else
                     {
                         os << "Your code is incorrect..." << std::endl;
 
-                        //break;
+                        
                     }
                 }
                 break;
