@@ -71,7 +71,7 @@ namespace sict
 			
 			myCustomerOrder.pop_front();
 		
-			return ready.isItemFilled(this->getName()) ? true : false;
+			return ready.isFilled() ? true : false;
 		}
 		else
 		{
